@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Commandes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true">
+  <ion-segment value="all-orders" scrollable> <!-- Valeur par défaut -->
+    <ion-segment-button value="all-orders">
+      <ion-label>Toutes les demandes</ion-label>
+  
+    </ion-segment-button>
+    <ion-segment-button value="my-orders">
+      <ion-label>Mes demandes</ion-label>
+
+    </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="page == 1">
+    <p> Ta mere </p>
+  </div>
+  
+
+
+  <app-explore-container name="Page des commandes (WIP)"></app-explore-container>
+</ion-content>
