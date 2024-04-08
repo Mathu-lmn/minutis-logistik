@@ -38,7 +38,7 @@ let demands = [
     content: [
       tableData[2],
       tableData[1],
-      tableData[1],
+      tableData[0],
       tableData[1],
       tableData[1],
       tableData[1],
@@ -85,7 +85,6 @@ export class AllDemandsComponent implements OnInit {
   }[];
 
   constructor() {
-    console.log('AllDemandsComponent constructor');
     this.demands = demands;
   }
 
@@ -97,5 +96,9 @@ export class AllDemandsComponent implements OnInit {
 
   showDemand(demand: any) {
     console.log('showDemand', demand);
+  }
+
+  ngOnInit() {
+    console.log('AllDemandsComponent ngOnInit');
   }
 }
