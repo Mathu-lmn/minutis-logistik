@@ -130,6 +130,24 @@ export class LogLMyDemandsComponent  implements OnInit {
     return demand.content.map((product) => product.name + ' (' + product.quantity + ' ' + product.comment + ')').join(', ');
   }
 
+  getColor (demand: Demand) {
+    if (demand.status === 'Pending') {
+      return 'danger';
+    } else if (demand.status === 'Selected') {
+      return 'warning';
+    } else if (demand.status === 'Shipping') {
+      return 'primary';
+    } else if (demand.status === 'Finished') {
+      return 'success';
+    }
+    return 'secondary';
+  }
+
+  log(demand: Demand) {
+    console.log(demand);
+  }
+
+
   // lint:disable-next-line: use-lifecycle-interface
   ngOnInit() {}
 

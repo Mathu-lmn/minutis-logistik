@@ -4,7 +4,7 @@
 
   <ion-list [inset]="true">
     <ion-item *ngFor="let demand of demands">
-      <ion-button color="{{ getColor }}">
+      <ion-button color="{{ getColor(demand) }}" (click)="log(demand)">
         <p> {{ getProducts(demand) }} </p>
       </ion-button>
     </ion-item>
