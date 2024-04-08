@@ -9,22 +9,20 @@
 
 
 <ion-content [fullscreen]="true">
-  <ion-segment value="all-orders" scrollable> <!-- Valeur par défaut -->
+  <ion-segment value="all-orders" (ionChange)="segmentChanged($event)" scrollable> <!-- Valeur par défaut -->
     <ion-segment-button value="all-orders">
       <ion-label>Toutes les demandes</ion-label>
-  
     </ion-segment-button>
     <ion-segment-button value="my-orders">
       <ion-label>Mes demandes</ion-label>
-
     </ion-segment-button>
   </ion-segment>
 
-  <div ngIf="page == 1">
-    <p> Ta mere </p>
-  </div>
-  
+  <div *ngIf="segmentValue === 'all-orders'; then listAll else listMine"></div>
+  <!-- <all-orders #all-o></all-orders>
+  <my-orders #all-o></my-orders> -->
+  <ng-template #listAll>quoicoubeh</ng-template>
+  <ng-template #listMine>apanyan</ng-template>
 
-
-  <app-explore-container name="Page des commandes (WIP)"></app-explore-container>
+  <!-- <app-explore-container name="Page des commandes (WIP)"></app-explore-container> -->
 </ion-content>
