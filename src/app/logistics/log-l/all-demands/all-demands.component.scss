@@ -1,0 +1,12 @@
+ion-button {
+  --background: #eb2828;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+ion-button p {
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}

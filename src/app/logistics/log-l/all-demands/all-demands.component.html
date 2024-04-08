@@ -1,0 +1,9 @@
+<ion-content>
+  <ion-list [inset]="true">
+    <ion-item *ngFor="let demand of demands">
+      <ion-button (click)="showDemand(demand)">
+        <p>{{getProducts(demand)}}</p>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
