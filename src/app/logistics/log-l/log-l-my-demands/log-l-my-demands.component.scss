@@ -9,11 +9,10 @@ ion-button {
   // fix height
   height: 40px;
   // overflow*
-  
 }
 
 p {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }

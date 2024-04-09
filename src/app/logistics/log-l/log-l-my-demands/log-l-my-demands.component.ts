@@ -1,9 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonList, IonLabel, IonItem, IonInfiniteScroll, IonToolbar, IonHeader, IonTitle , IonButton} from '@ionic/angular/standalone';
+import {
+  IonList,
+  IonLabel,
+  IonItem,
+  IonInfiniteScroll,
+  IonToolbar,
+  IonHeader,
+  IonTitle,
+  IonButton,
+} from '@ionic/angular/standalone';
 import { DemandPriority, DemandStatus, Demand } from '../../types';
 import { Utils } from '../../utils';
-
 
 let tableData = [
   { label: 'Medikit', quantity: '1', item: 'medkit' },
@@ -53,11 +61,7 @@ let demands: Demand[] = [
     priority: DemandPriority.High,
     timestampDemand: '2021-07-04',
     comment: 'Comment 4',
-    content: [
-      tableData[1],
-      tableData[2],
-      tableData[0],
-    ],
+    content: [tableData[1], tableData[2], tableData[0]],
   },
   {
     id: 5,
@@ -124,15 +128,24 @@ let demands: Demand[] = [
   },
 ];
 
-
 @Component({
   selector: 'app-log-l-my-demands',
   templateUrl: './log-l-my-demands.component.html',
   styleUrls: ['./log-l-my-demands.component.scss'],
   standalone: true,
-  imports: [IonList, IonLabel, IonItem, IonInfiniteScroll, IonToolbar, IonHeader, IonTitle, CommonModule, IonButton],
+  imports: [
+    IonList,
+    IonLabel,
+    IonItem,
+    IonInfiniteScroll,
+    IonToolbar,
+    IonHeader,
+    IonTitle,
+    CommonModule,
+    IonButton,
+  ],
 })
-export class LogLMyDemandsComponent  implements OnInit {
+export class LogLMyDemandsComponent implements OnInit {
   demands: Demand[];
 
   constructor(public utils: Utils) {
@@ -153,8 +166,7 @@ export class LogLMyDemandsComponent  implements OnInit {
     console.log(demand);
   }
 
-
   // lint:disable-next-line: use-lifecycle-interface
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {}
-
 }

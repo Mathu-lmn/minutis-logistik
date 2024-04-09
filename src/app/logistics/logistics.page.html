@@ -22,13 +22,13 @@
   <!-- Les lignes suivantes sont pour la démonstration, en réalité on copierait le contenu de ce if -->
   <div *ngIf="!isER; else ER">
     <div *ngIf="segmentValue === 'all-orders'; then listAll else listMine"></div>
-    
+
     <ng-template #listAll><app-all-demands></app-all-demands></ng-template>
     <ng-template #listMine><app-log-l-my-demands></app-log-l-my-demands></ng-template>
   </div>
   <ng-template #ER>
     <div *ngIf="segmentValue === 'all-orders'; then listAll else listMine"></div>
-    
+
     <ng-template #listAll><app-s-all-demands></app-s-all-demands></ng-template>
     <ng-template #listMine><app-s-my-demands></app-s-my-demands></ng-template>
   </ng-template>
