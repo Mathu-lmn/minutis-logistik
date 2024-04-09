@@ -154,7 +154,7 @@ let demands = [
   ],
 })
 
-export class AllDemandsComponent implements OnInit {
+export class LogLAllDemandsComponent implements OnInit {
   demands: {
     id: number;
     status: string;
