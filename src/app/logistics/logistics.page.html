@@ -24,7 +24,7 @@
     <div *ngIf="segmentValue === 'all-orders'; then listAll else listMine"></div>
 
     <ng-template #listAll><app-all-demands></app-all-demands></ng-template>
-    <ng-template #listMine><app-log-l-my-demands></app-log-l-my-demands></ng-template>
+    <ng-template #listMine><app-my-demands></app-my-demands></ng-template>
   </div>
   <ng-template #ER>
     <div *ngIf="segmentValue === 'all-orders'; then listAll else listMine"></div>

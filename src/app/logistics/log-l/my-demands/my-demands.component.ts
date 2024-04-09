@@ -126,7 +126,7 @@ let demands: Demand[] = [
 
 
 @Component({
-  selector: 'app-log-l-my-demands',
+  selector: 'app-my-demands',
   templateUrl: './my-demands.component.html',
   styleUrls: ['./my-demands.component.scss'],
   standalone: true,
