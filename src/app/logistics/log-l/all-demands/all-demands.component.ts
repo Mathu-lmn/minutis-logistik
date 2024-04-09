@@ -14,6 +14,8 @@ import {
 } from '@ionic/angular/standalone';
 import { hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
+import { DemandPriority, DemandStatus, Demand } from '../../types';
+import { Utils } from '../../utils';
 
 let tableData = [
   { label: 'Medikit', quantity: '1', item: 'medkit' },
@@ -21,21 +23,21 @@ let tableData = [
   { label: 'Feur', quantity: '24', item: 'feur' },
 ];
 
-let demands = [
+let demands: Demand[] = [
   {
     id: 1,
-    status: 'Ready-to-Ship',
+    status: DemandStatus.ReadyToShip,
     assigned: false,
-    priority: 'High',
+    priority: DemandPriority.Urgent,
     timestampDemand: '2021-07-01',
     comment: 'Comment 1',
     content: [tableData[0]],
   },
   {
     id: 2,
-    status: 'Pending',
+    status: DemandStatus.Pending,
     assigned: false,
-    priority: 'Medium',
+    priority: DemandPriority.Medium,
     timestampDemand: '2021-07-02',
     comment: 'Comment 2',
     content: [
@@ -49,85 +51,85 @@ let demands = [
   },
   {
     id: 3,
-    status: 'Assigned',
+    status: DemandStatus.Assigned,
     assigned: false,
-    priority: 'Low',
+    priority: DemandPriority.Low,
     timestampDemand: '2021-07-03',
     comment: 'Comment 3',
     content: [tableData[2]],
   },
   {
     id: 4,
-    status: 'Shipping',
+    status: DemandStatus.Shipping,
     assigned: false,
-    priority: 'High',
+    priority: DemandPriority.High,
     timestampDemand: '2021-07-04',
     comment: 'Comment 4',
     content: [
       tableData[1],
       tableData[2],
       tableData[0],
-  ],
+    ],
   },
   {
     id: 5,
-    status: 'Delivered',
+    status: DemandStatus.Delivered,
     assigned: false,
-    priority: 'Medium',
+    priority: DemandPriority.Medium,
     timestampDemand: '2021-07-05',
     comment: 'Comment 5',
     content: [tableData[0]],
   },
   {
     id: 6,
-    status: 'Pending',
+    status: DemandStatus.Pending,
     assigned: false,
-    priority: 'Low',
+    priority: DemandPriority.Low,
     timestampDemand: '2021-07-06',
     comment: 'Comment 6',
     content: [tableData[1]],
   },
   {
     id: 7,
-    status: 'Ready-to-Ship',
+    status: DemandStatus.ReadyToShip,
     assigned: false,
-    priority: 'High',
+    priority: DemandPriority.High,
     timestampDemand: '2021-07-07',
     comment: 'Comment 7',
     content: [tableData[2]],
   },
   {
     id: 8,
-    status: 'Pending',
+    status: DemandStatus.Pending,
     assigned: false,
-    priority: 'Medium',
+    priority: DemandPriority.Medium,
     timestampDemand: '2021-07-08',
     comment: 'Comment 8',
     content: [tableData[0]],
   },
   {
     id: 9,
-    status: 'Assigned',
+    status: DemandStatus.Assigned,
     assigned: false,
-    priority: 'Low',
+    priority: DemandPriority.Low,
     timestampDemand: '2021-07-09',
     comment: 'Comment 9',
     content: [tableData[1]],
   },
   {
     id: 10,
-    status: 'Shipping',
+    status: DemandStatus.Shipping,
     assigned: false,
-    priority: 'High',
+    priority: DemandPriority.High,
     timestampDemand: '2021-07-10',
     comment: 'Comment 10',
     content: [tableData[2]],
   },
   {
     id: 11,
-    status: 'Delivered',
+    status: DemandStatus.Delivered,
     assigned: false,
-    priority: 'Medium',
+    priority: DemandPriority.Medium,
     timestampDemand: '2021-07-11',
     comment: 'Comment 11',
     content: [tableData[0]],
@@ -155,59 +157,21 @@ let demands = [
 })
 
 export class LogLAllDemandsComponent implements OnInit {
-  demands: {
-    id: number;
-    status: string;
-    assigned: boolean;
-    priority: string;
-    timestampDemand: string;
-    comment: string;
-    content: { label: string; quantity: string; item: string }[];
-  }[];
+  demands: Demand[];
 
-  constructor() {
+  constructor(public utils: Utils) {
     addIcons({ hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline });
     this.demands = demands;
   }
 
-  getProducts(demand: any) {
+  getProducts(demand: Demand) {
     return demand.content
       .map((item: any) => item.label + ' (' + item.quantity + ')')
       .join(', ');
   }
 
-  showDemand(demand: any) {
+  showDemand(demand: Demand) {
     console.log('showDemand', demand);
-  }
-
-  getIcon(status: string) {
-    switch (status) {
-      case 'Pending':
-        return 'assets/icon/pending.svg';
-      case 'Assigned':
-        return 'assets/icon/assigned.svg';
-      case 'Ready-to-Ship':
-        return 'assets/icon/rts.svg';
-      case 'Shipping':
-        return 'assets/icon/shipping.svg';
-      case 'Delivered':
-        return 'assets/icon/delivered.svg';
-      default:
-        return 'hourglass-outline';
-    }
-  }
-
-  getBgColor(priority: string) {
-    switch (priority) {
-      case 'High':
-        return 'danger';
-      case 'Medium':
-        return 'warning';
-      case 'Low':
-        return 'success';
-      default:
-        return 'medium';
-    }
   }
 
   ngOnInit() {

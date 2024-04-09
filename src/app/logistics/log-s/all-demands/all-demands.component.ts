@@ -15,6 +15,7 @@ import {
 import { hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { DemandPriority, DemandStatus, Demand } from '../../types';
+import { Utils } from '../../utils';
 
 let tableData = [
   { label: 'Medikit', quantity: '1', item: 'medkit' },
@@ -157,7 +158,8 @@ let demands: Demand[] = [
 
 export class LogSAllDemandsComponent implements OnInit {
   demands: Demand[];
-  constructor() {
+
+  constructor(public utils: Utils) {
     addIcons({ hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline });
     this.demands = demands;
   }
@@ -170,36 +172,6 @@ export class LogSAllDemandsComponent implements OnInit {
 
   showDemand(demand: Demand) {
     console.log('showDemand', demand);
-  }
-
-  getIcon(status: DemandStatus) {
-    switch (status) {
-      case DemandStatus.Pending:
-        return 'assets/icon/pending.svg';
-      case DemandStatus.Assigned:
-        return 'assets/icon/assigned.svg';
-      case DemandStatus.ReadyToShip:
-        return 'assets/icon/rts.svg';
-      case DemandStatus.Shipping:
-        return 'assets/icon/shipping.svg';
-      case DemandStatus.Delivered:
-        return 'assets/icon/delivered.svg';
-      default:
-        return 'hourglass-outline';
-    }
-  }
-
-  getBgColor(priority: DemandPriority) {
-    switch (priority) {
-      case DemandPriority.Urgent:
-        return 'danger';
-      case DemandPriority.High:
-        return 'warning';
-      case DemandPriority.Medium:
-        return 'secondary';
-      case DemandPriority.Low:
-        return 'success';
-    }
   }
 
   ngOnInit() {

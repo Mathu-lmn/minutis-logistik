@@ -15,6 +15,8 @@ import {
 } from '@ionic/angular/standalone';
 import { hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
+import { DemandStatus, DemandPriority, Demand } from '../../types';
+import { Utils } from '../../utils';
 
 let tableData = [
   { label: 'Medikit', quantity: '1', item: 'medkit' },
@@ -22,21 +24,21 @@ let tableData = [
   { label: 'Feur', quantity: '24', item: 'feur' },
 ];
 
-let demands = [
+let demands: Demand[] = [
   {
     id: 1,
-    status: 'Ready-to-Ship',
+    status: DemandStatus.ReadyToShip,
     assigned: false,
-    priority: 'High',
+    priority: DemandPriority.High,
     timestampDemand: '2021-07-01',
     comment: 'Comment 1',
     content: [tableData[0]],
   },
   {
     id: 2,
-    status: 'Pending',
+    status: DemandStatus.Pending,
     assigned: false,
-    priority: 'Medium',
+    priority: DemandPriority.Medium,
     timestampDemand: '2021-07-02',
     comment: 'Comment 2',
     content: [
@@ -50,9 +52,9 @@ let demands = [
   },
   {
     id: 4,
-    status: 'Assigned',
+    status: DemandStatus.Assigned,
     assigned: false,
-    priority: 'High',
+    priority: DemandPriority.High,
     timestampDemand: '2021-07-04',
     comment: 'Comment 4',
     content: [
@@ -63,18 +65,18 @@ let demands = [
   },
   {
     id: 5,
-    status: 'Delivered',
+    status: DemandStatus.Delivered,
     assigned: false,
-    priority: 'Medium',
+    priority: DemandPriority.Medium,
     timestampDemand: '2021-07-05',
     comment: 'Comment 5',
     content: [tableData[0]],
   },
   {
     id: 6,
-    status: 'Delivered',
+    status: DemandStatus.Delivered,
     assigned: false,
-    priority: 'Medium',
+    priority: DemandPriority.Medium,
     timestampDemand: '2021-07-02',
     comment: 'Comment 2',
     content: [
@@ -110,17 +112,9 @@ let demands = [
 })
 
 export class LogSMyDemandsComponent implements OnInit {
-  demands: {
-    id: number;
-    status: string;
-    assigned: boolean;
-    priority: string;
-    timestampDemand: string;
-    comment: string;
-    content: { label: string; quantity: string; item: string }[];
-  }[];
+  demands: Demand[];
 
-  constructor() {
+  constructor(public utils: Utils) {
     addIcons({ hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline });
     this.demands = demands;
   }
@@ -133,36 +127,6 @@ export class LogSMyDemandsComponent implements OnInit {
 
   showDemand(demand: any) {
     console.log('showDemand', demand);
-  }
-
-  getIcon(status: string) {
-    switch (status) {
-      case 'Pending':
-        return 'assets/icon/pending.svg';
-      case 'Assigned':
-        return 'assets/icon/assigned.svg';
-      case 'Ready-to-Ship':
-        return 'assets/icon/rts.svg';
-      case 'Shipping':
-        return 'assets/icon/shipping.svg';
-      case 'Delivered':
-        return 'assets/icon/delivered.svg';
-      default:
-        return 'hourglass-outline';
-    }
-  }
-
-  getBgColor(priority: string) {
-    switch (priority) {
-      case 'High':
-        return 'danger';
-      case 'Medium':
-        return 'warning';
-      case 'Low':
-        return 'success';
-      default:
-        return 'medium';
-    }
   }
 
   ngOnInit() {
