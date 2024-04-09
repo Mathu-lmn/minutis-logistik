@@ -14,7 +14,7 @@ import {
 } from '@ionic/angular/standalone';
 import { hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
-import { DemandPriority, DemandStatus, demand } from '../../types';
+import { DemandPriority, DemandStatus, Demand } from '../../types';
 
 let tableData = [
   { label: 'Medikit', quantity: '1', item: 'medkit' },
