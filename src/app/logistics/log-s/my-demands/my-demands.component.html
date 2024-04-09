@@ -1,7 +1,9 @@
 <div>
   <ion-list [inset]="true">
     <ion-list-header>
-      Commandes en cours
+      <ion-title size="large">
+        Commandes en cours
+      </ion-title>
     </ion-list-header>
     <ng-container *ngFor="let demand of demands">
       <ion-item detail="false" button *ngIf="demand.status !== 'Delivered'" color="{{utils.getBgColor(demand.priority)}}">
@@ -16,7 +18,9 @@
 
   <ion-list [inset]="true">
     <ion-list-header>
-      Commandes passées
+      <ion-title size="large">
+        Commandes passées
+      </ion-title>
     </ion-list-header>
     <ng-container *ngFor="let demand of demands">
       <ion-item detail="false" button *ngIf="demand.status === 'Delivered'" color="medium">

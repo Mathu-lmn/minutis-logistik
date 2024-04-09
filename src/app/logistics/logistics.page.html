@@ -11,7 +11,7 @@
 <ion-content [fullscreen]="true">
   <!-- Les lignes suivantes sont pour la démonstration, en réalité on copierait le contenu de ce if -->
   <div *ngIf="!isER; else ER">
-    <ion-segment value="all-orders" (ionChange)="segmentChanged($event)" scrollable> <!-- Valeur par défaut -->
+    <ion-segment color="danger" value="all-orders" (ionChange)="segmentChanged($event)" scrollable> <!-- Valeur par défaut -->
       <ion-segment-button value="all-orders">
         <ion-label class="segment-label">Toutes les demandes</ion-label>
       </ion-segment-button>
