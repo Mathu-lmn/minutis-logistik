@@ -1,11 +1,12 @@
-ion-button {
-  --background: #eb2828;
+ion-item {
+  --inner-padding-end: 0px;
   width: 100%;
   height: 100%;
+  margin-bottom: 10px;
   border-radius: 10px;
 }
 
-ion-button p {
+ion-item p {
   white-space: nowrap;
   overflow: hidden !important;
   text-overflow: ellipsis;

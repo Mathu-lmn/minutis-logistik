@@ -10,7 +10,10 @@ import {
   IonButton,
   IonList,
   IonItem,
+  IonIcon,
 } from '@ionic/angular/standalone';
+import { hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 
 let tableData = [
   { label: 'Medikit', quantity: '1', item: 'medkit' },
@@ -21,7 +24,7 @@ let tableData = [
 let demands = [
   {
     id: 1,
-    status: 'Pending',
+    status: 'Ready-to-Ship',
     assigned: false,
     priority: 'High',
     timestampDemand: '2021-07-01',
@@ -46,7 +49,7 @@ let demands = [
   },
   {
     id: 3,
-    status: 'Pending',
+    status: 'Assigned',
     assigned: false,
     priority: 'Low',
     timestampDemand: '2021-07-03',
@@ -71,8 +74,10 @@ let demands = [
     IonLabel,
     IonList,
     IonItem,
+    IonIcon,
   ],
 })
+
 export class AllDemandsComponent implements OnInit {
   demands: {
     id: number;
@@ -85,6 +90,7 @@ export class AllDemandsComponent implements OnInit {
   }[];
 
   constructor() {
+    addIcons({ hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline });
     this.demands = demands;
   }
 
@@ -96,6 +102,36 @@ export class AllDemandsComponent implements OnInit {
 
   showDemand(demand: any) {
     console.log('showDemand', demand);
+  }
+
+  getIcon(status: string) {
+    switch (status) {
+      case 'Pending':
+        return 'hourglass-outline';
+      case 'Assigned':
+        return 'storefront-outline';
+      case 'Ready-to-Ship':
+        return 'cube-outline';
+      case 'Shipping':
+        return 'send-outline';
+      case 'Delivered':
+        return 'checkmark-done-outline';
+      default:
+        return 'hourglass-outline';
+    }
+  }
+
+  getBgColor(priority: string) {
+    switch (priority) {
+      case 'High':
+        return 'danger';
+      case 'Medium':
+        return 'warning';
+      case 'Low':
+        return 'success';
+      default:
+        return 'medium';
+    }
   }
 
   ngOnInit() {
