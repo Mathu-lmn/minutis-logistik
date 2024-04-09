@@ -9,7 +9,7 @@ import {
   IonSegmentButton,
 } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
-import { LogLMyDemandsComponent } from './log-l/log-l-my-demands/log-l-my-demands.component';
+import { LogLMyDemandsComponent } from './log-l/my-demands/my-demands.component';
 import { LogLAllDemandsComponent } from './log-l/all-demands/all-demands.component';
 import { LogSAllDemandsComponent } from './log-s/all-demands/all-demands.component';
 import { LogSMyDemandsComponent } from './log-s/my-demands/my-demands.component';
