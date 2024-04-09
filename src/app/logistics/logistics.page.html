@@ -1,7 +1,7 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="false">
   <ion-toolbar>
     <ion-title>
-      Commandes
+      Demandes
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,7 +9,7 @@
 
 
 <ion-content [fullscreen]="true">
-  <ion-segment value="all-orders" (ionChange)="segmentChanged($event)" scrollable> <!-- Valeur par défaut -->
+  <ion-segment color="danger" value="all-orders" (ionChange)="segmentChanged($event)" scrollable> <!-- Valeur par défaut -->
     <ion-segment-button value="all-orders">
       <ion-label class="segment-label">Toutes les demandes</ion-label>
     </ion-segment-button>

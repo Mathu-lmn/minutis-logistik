@@ -1,11 +1,9 @@
-ion-segment {
-  --background: white;
-}
-
-ion-segment-button {
-  --indicator-color: var(--ion-toolbar-background);
-}
-
-.segment-label {
+ion-toolbar {
   color: var(--ion-toolbar-background);
+  --background: white;
+  border-bottom: 3px solid var(--ion-toolbar-background);
+}
+ion-title {
+  font-weight: bold;
+  font-size: x-large;
 }
