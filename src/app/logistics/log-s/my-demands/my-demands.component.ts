@@ -11,6 +11,7 @@ import {
   IonList,
   IonItem,
   IonIcon,
+  IonListHeader,
 } from '@ionic/angular/standalone';
 import { hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
@@ -48,17 +49,8 @@ let demands = [
     ],
   },
   {
-    id: 3,
-    status: 'Assigned',
-    assigned: false,
-    priority: 'Low',
-    timestampDemand: '2021-07-03',
-    comment: 'Comment 3',
-    content: [tableData[2]],
-  },
-  {
     id: 4,
-    status: 'Shipping',
+    status: 'Assigned',
     assigned: false,
     priority: 'High',
     timestampDemand: '2021-07-04',
@@ -67,7 +59,7 @@ let demands = [
       tableData[1],
       tableData[2],
       tableData[0],
-  ],
+    ],
   },
   {
     id: 5,
@@ -80,64 +72,26 @@ let demands = [
   },
   {
     id: 6,
-    status: 'Pending',
-    assigned: false,
-    priority: 'Low',
-    timestampDemand: '2021-07-06',
-    comment: 'Comment 6',
-    content: [tableData[1]],
-  },
-  {
-    id: 7,
-    status: 'Ready-to-Ship',
-    assigned: false,
-    priority: 'High',
-    timestampDemand: '2021-07-07',
-    comment: 'Comment 7',
-    content: [tableData[2]],
-  },
-  {
-    id: 8,
-    status: 'Pending',
-    assigned: false,
-    priority: 'Medium',
-    timestampDemand: '2021-07-08',
-    comment: 'Comment 8',
-    content: [tableData[0]],
-  },
-  {
-    id: 9,
-    status: 'Assigned',
-    assigned: false,
-    priority: 'Low',
-    timestampDemand: '2021-07-09',
-    comment: 'Comment 9',
-    content: [tableData[1]],
-  },
-  {
-    id: 10,
-    status: 'Shipping',
-    assigned: false,
-    priority: 'High',
-    timestampDemand: '2021-07-10',
-    comment: 'Comment 10',
-    content: [tableData[2]],
-  },
-  {
-    id: 11,
     status: 'Delivered',
     assigned: false,
     priority: 'Medium',
-    timestampDemand: '2021-07-11',
-    comment: 'Comment 11',
-    content: [tableData[0]],
+    timestampDemand: '2021-07-02',
+    comment: 'Comment 2',
+    content: [
+      tableData[2],
+      tableData[1],
+      tableData[0],
+      tableData[1],
+      tableData[1],
+      tableData[1],
+    ],
   },
 ];
 
 @Component({
-  selector: 'app-s-all-demands',
-  templateUrl: './all-demands.component.html',
-  styleUrls: ['./all-demands.component.scss'],
+  selector: 'app-s-my-demands',
+  templateUrl: './my-demands.component.html',
+  styleUrls: ['./my-demands.component.scss'],
   standalone: true,
   imports: [
     CommonModule,
@@ -151,10 +105,11 @@ let demands = [
     IonList,
     IonItem,
     IonIcon,
+    IonListHeader,
   ],
 })
 
-export class LogSAllDemandsComponent implements OnInit {
+export class LogSMyDemandsComponent implements OnInit {
   demands: {
     id: number;
     status: string;
