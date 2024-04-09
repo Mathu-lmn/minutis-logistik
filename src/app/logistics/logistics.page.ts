@@ -3,13 +3,14 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonSegment, IonLabel, IonS
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { CommonModule } from '@angular/common';
 import {LogLMyDemandsComponent} from './log-l/log-l-my-demands/log-l-my-demands.component';
+import { AllDemandsComponent } from './log-l/all-demands/all-demands.component';
 
 @Component({
   selector: 'app-logistics',
   templateUrl: 'logistics.page.html',
   styleUrls: ['logistics.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonLabel, IonTitle, IonContent, IonSegment, IonSegmentButton, ExploreContainerComponent, LogLMyDemandsComponent, CommonModule]
+  imports: [IonHeader, IonToolbar, IonLabel, IonTitle, IonContent, IonSegment, IonSegmentButton, ExploreContainerComponent, LogLMyDemandsComponent, AllDemandsComponent, CommonModule]
 })
 export class LogisticsPage {
   isER: boolean = false; // pour la démonstration, changez cette valeur pour le point de vue du secouriste & du logisticien
