@@ -1,0 +1,10 @@
+<div>
+  <ion-list [inset]="true">
+    <ng-container *ngFor="let demand of demands">
+      <ion-item button *ngIf="demand.status !== 'Delivered'" color="{{getBgColor(demand.priority)}}">
+        <ion-icon slot="start" size="large" color="primary" src="{{getIcon(demand.status)}}"></ion-icon>
+        <p>{{getProducts(demand)}}</p>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</div>
