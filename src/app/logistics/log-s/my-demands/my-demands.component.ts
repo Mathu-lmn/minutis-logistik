@@ -25,9 +25,9 @@ import { DemandStatus, DemandPriority, Demand } from '../../types';
 import { Utils } from '../../utils';
 
 let tableData = [
-  { label: 'Medikit', quantity: '1', item: 'medkit' },
-  { label: 'Brancard', quantity: '20', item: 'brancard' },
-  { label: 'Feur', quantity: '24', item: 'feur' },
+  { label: 'Medikit', quantity: 1, item: 'medkit' },
+  { label: 'Brancard', quantity: 20, item: 'brancard' },
+  { label: 'Feur', quantity: 24, item: 'feur' },
 ];
 
 let demands: Demand[] = [
