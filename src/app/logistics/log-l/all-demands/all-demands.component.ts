@@ -107,15 +107,15 @@ export class AllDemandsComponent implements OnInit {
   getIcon(status: string) {
     switch (status) {
       case 'Pending':
-        return 'hourglass-outline';
+        return 'assets/icon/pending.svg';
       case 'Assigned':
-        return 'storefront-outline';
+        return 'assets/icon/assigned.svg';
       case 'Ready-to-Ship':
-        return 'cube-outline';
+        return 'assets/icon/rts.svg';
       case 'Shipping':
-        return 'send-outline';
+        return 'assets/icon/shipping.svg';
       case 'Delivered':
-        return 'checkmark-done-outline';
+        return 'assets/icon/delivered.svg';
       default:
         return 'hourglass-outline';
     }

@@ -1,7 +1,7 @@
 <ion-content>
   <ion-list [inset]="true">
     <ion-item button *ngFor="let demand of demands" color="{{getBgColor(demand.priority)}}">
-      <ion-icon slot="start" size="large" color="primary" name="{{getIcon(demand.status)}}"></ion-icon>
+      <ion-icon slot="start" size="large" color="primary" src="{{getIcon(demand.status)}}"></ion-icon>
       <p>{{getProducts(demand)}}</p>
     </ion-item>
   </ion-list>
