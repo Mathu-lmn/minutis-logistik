@@ -18,11 +18,19 @@
     </ion-segment-button>
   </ion-segment>
 
-  <div *ngIf="segmentValue === 'all-orders'; then listAll else listMine"></div>
-  <!-- <all-orders #all-o></all-orders>
-  <my-orders #all-o></my-orders> -->
-  <ng-template #listAll>quoicoubeh</ng-template>
-  <ng-template #listMine>apanyan</ng-template>
+  <!-- Les lignes suivantes sont pour la démonstration, en réalité on copierait le contenu de ce if -->
+  <div *ngIf="!isER; else ER">
+    <div *ngIf="segmentValue === 'all-orders'; then listAll else listMine"></div>
+    
+    <ng-template #listAll>quoicoubeh</ng-template>
+    <ng-template #listMine>apanyan</ng-template>
+  </div>
+  <ng-template #ER>
+    <div *ngIf="segmentValue === 'all-orders'; then listAll else listMine"></div>
+    
+    <ng-template #listAll>secourist</ng-template>
+    <ng-template #listMine>secouriste</ng-template>
+  </ng-template>
 
   <!-- <app-explore-container name="Page des commandes (WIP)"></app-explore-container> -->
 </ion-content>

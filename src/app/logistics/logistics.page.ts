@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
   imports: [IonHeader, IonToolbar, IonLabel, IonTitle, IonContent, IonSegment, IonSegmentButton, ExploreContainerComponent, CommonModule]
 })
 export class LogisticsPage {
+  isER: boolean = true; // pour la démonstration, changez cette valeur pour le point de vue du secouriste & du logisticien
   segmentValue: string;
   constructor() {
     this.segmentValue = 'all-orders';
