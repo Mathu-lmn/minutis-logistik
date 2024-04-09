@@ -4,11 +4,14 @@
       Commandes en cours
     </ion-list-header>
     <ng-container *ngFor="let demand of demands">
-      <ion-item button *ngIf="demand.status !== 'Delivered'" color="{{utils.getBgColor(demand.priority)}}">
+      <ion-item detail="false" button *ngIf="demand.status !== 'Delivered'" color="{{utils.getBgColor(demand.priority)}}">
         <ion-icon slot="start" size="large" color="primary" src="{{utils.getIcon(demand.status)}}"></ion-icon>
         <p>{{getProducts(demand)}}</p>
       </ion-item>
     </ng-container>
+    <ion-item *ngIf="demands.length === 0">
+      <ion-label>Aucune commande en cours.</ion-label>
+    </ion-item>
   </ion-list>
 
   <ion-list [inset]="true">
@@ -16,10 +19,13 @@
       Commandes passées
     </ion-list-header>
     <ng-container *ngFor="let demand of demands">
-      <ion-item button *ngIf="demand.status === 'Delivered'" color="medium">
+      <ion-item detail="false" button *ngIf="demand.status === 'Delivered'" color="medium">
         <ion-icon slot="start" size="large" color="primary" src="{{utils.getIcon(demand.status)}}"></ion-icon>
         <p>{{getProducts(demand)}}</p>
       </ion-item>
     </ng-container>
+    <ion-item *ngIf="demands.length === 0">
+      <ion-label>Aucune commande passée.</ion-label>
+    </ion-item>
   </ion-list>
 </div>
