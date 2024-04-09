@@ -1,8 +1,23 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonContent, IonText, IonModal, IonList, IonLabel, IonItem, IonInfiniteScroll, IonToolbar, IonHeader, IonTitle , IonButton} from '@ionic/angular/standalone';
+import {
+  IonIcon,
+  IonContent,
+  IonText,
+  IonModal,
+  IonList,
+  IonLabel,
+  IonItem,
+  IonInfiniteScroll,
+  IonToolbar,
+  IonHeader,
+  IonTitle,
+  IonButton
+} from '@ionic/angular/standalone';
+import { closeOutline } from 'ionicons/icons';
 import { DemandPriority, DemandStatus, Demand } from '../../types';
 import { Utils } from '../../utils';
+import { addIcons } from 'ionicons';
 
 
 let tableData = [
@@ -130,15 +145,32 @@ let demands: Demand[] = [
   templateUrl: './my-demands.component.html',
   styleUrls: ['./my-demands.component.scss'],
   standalone: true,
-  imports: [IonContent, IonText, IonList, IonLabel, IonItem, IonInfiniteScroll, IonToolbar, IonHeader, IonTitle, IonModal, CommonModule, IonButton],
+  imports: [
+    IonIcon,
+    IonContent,
+    IonText,
+    IonList,
+    IonLabel,
+    IonItem,
+    IonInfiniteScroll,
+    IonToolbar,
+    IonHeader,
+    IonTitle,
+    IonModal,
+    CommonModule,
+    IonButton,
+  ],
 })
-export class LogLMyDemandsComponent  implements OnInit {
+export class LogLMyDemandsComponent implements OnInit {
   demands: Demand[];
   
   @ViewChild(IonModal) modal: any;
 
   constructor(public utils: Utils) {
     this.demands = demands;
+    addIcons({
+      closeOutline
+    });
   }
 
   getProducts(demand: Demand) {

@@ -33,7 +33,7 @@ import { LogSMyDemandsComponent } from './log-s/my-demands/my-demands.component'
   ],
 })
 export class LogisticsPage {
-  isER: boolean = true; // pour la démonstration, changez cette valeur pour le point de vue du secouriste & du logisticien
+  isER: boolean = false; // pour la démonstration, changez cette valeur pour le point de vue du secouriste & du logisticien
   segmentValue: string;
   constructor() {
     this.segmentValue = 'all-orders';
