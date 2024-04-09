@@ -1,31 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonList, IonLabel, IonItem, IonInfiniteScroll, IonToolbar, IonHeader, IonTitle , IonButton} from '@ionic/angular/standalone';
-
-
-interface Demand { id: number, status: string, assigned: boolean, priority: string, timestampDemand: string, comment: string, content: {id: number, name: string, quantity: number, unit: string, comment: string}[]; };
+import { IonContent, IonText, IonList, IonLabel, IonItem, IonInfiniteScroll, IonToolbar, IonHeader, IonTitle, IonButton, IonModal} from '@ionic/angular/standalone';
+import { Demand, DemandPriority, DemandStatus } from 'src/app/logistics/types';
 
 let demands: Demand[] = [
   {
     id: 1,
-    status: 'Pending',
+    status: DemandStatus.Pending,
     assigned: true,
-    priority: 'High',
+    priority: DemandPriority.High,
     timestampDemand: '2021:01:01-12:00',
     comment: 'Comment 1Comment 1Comment 1Comment 1Comment 1Comment 1Comment 1Comment 1Comment 1Comment 1Comment 1Comment 1Comment 1Comment 1',
     content: [
       {
-        id: 1,
-        name: 'Product 1',
+        label: 'Product 1',
         quantity: 10,
-        unit: 'kg',
         comment: 'Comment 1'
       },
       {
         id: 2,
         name: 'Product 2',
         quantity: 20,
-        unit: 'kg',
         comment: 'Comment 2'
       },
       {
@@ -114,13 +109,15 @@ let demands: Demand[] = [
 
 @Component({
   selector: 'app-log-l-my-demands',
-  templateUrl: './log-l-my-demands.component.html',
-  styleUrls: ['./log-l-my-demands.component.scss'],
+  templateUrl: './my-demands.component.html',
+  styleUrls: ['./my-demands.component.scss'],
   standalone: true,
-  imports: [IonList, IonLabel, IonItem, IonInfiniteScroll, IonToolbar, IonHeader, IonTitle, CommonModule, IonButton],
+  imports: [IonContent, IonText, IonList, IonLabel, IonItem, IonInfiniteScroll, IonToolbar, IonHeader, IonTitle, IonModal, CommonModule, IonButton],
 })
 export class LogLMyDemandsComponent  implements OnInit {
   demands: Demand[];
+  
+  @ViewChild(IonModal) modal: any;
 
   constructor() {
     this.demands = demands;
@@ -131,22 +128,30 @@ export class LogLMyDemandsComponent  implements OnInit {
   }
 
   getColor (demand: Demand) {
-    if (demand.status === 'Pending') {
-      return 'danger';
-    } else if (demand.status === 'Selected') {
-      return 'warning';
-    } else if (demand.status === 'Shipping') {
-      return 'primary';
-    } else if (demand.status === 'Finished') {
-      return 'success';
+    switch (demand.status) { 
+      case 'Pending': {
+        return 'danger';
+      }
+      case 'Selected': {
+        return 'warning';
+      }
+      case 'Shipping': {
+        return 'primary';
+      }
+      case 'Finished': {
+        return 'success';
+      }
+      default: {
+        return 'secondary';
+      }
     }
-    return 'secondary';
   }
 
   log(demand: Demand) {
     console.log(demand);
   }
 
+  
 
   // lint:disable-next-line: use-lifecycle-interface
   ngOnInit() {}

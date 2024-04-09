@@ -15,6 +15,8 @@ import {
 import { hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 
+import { Utils } from '../../utils.service';
+
 let tableData = [
   { label: 'Medikit', quantity: '1', item: 'medkit' },
   { label: 'Brancard', quantity: '20', item: 'brancard' },
@@ -165,9 +167,9 @@ export class AllDemandsComponent implements OnInit {
     content: { label: string; quantity: string; item: string }[];
   }[];
 
-  constructor() {
-    addIcons({ hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline });
+  constructor(public utils: Utils) {
     this.demands = demands;
+    addIcons({ hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline });
   }
 
   getProducts(demand: any) {
@@ -178,36 +180,6 @@ export class AllDemandsComponent implements OnInit {
 
   showDemand(demand: any) {
     console.log('showDemand', demand);
-  }
-
-  getIcon(status: string) {
-    switch (status) {
-      case 'Pending':
-        return 'assets/icon/pending.svg';
-      case 'Assigned':
-        return 'assets/icon/assigned.svg';
-      case 'Ready-to-Ship':
-        return 'assets/icon/rts.svg';
-      case 'Shipping':
-        return 'assets/icon/shipping.svg';
-      case 'Delivered':
-        return 'assets/icon/delivered.svg';
-      default:
-        return 'hourglass-outline';
-    }
-  }
-
-  getBgColor(priority: string) {
-    switch (priority) {
-      case 'High':
-        return 'danger';
-      case 'Medium':
-        return 'warning';
-      case 'Low':
-        return 'success';
-      default:
-        return 'medium';
-    }
   }
 
   ngOnInit() {

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { LogLMyDemandsComponent } from './log-l-my-demands.component';
+import { LogLMyDemandsComponent } from './my-demands.component';
 
 describe('LogLMyDemandsComponent', () => {
   let component: LogLMyDemandsComponent;

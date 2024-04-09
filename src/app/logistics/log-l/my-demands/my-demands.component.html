@@ -1,0 +1,12 @@
+<div>
+  <ion-list [inset]="true">
+    <ion-item button id="demand{{demand.id}}" *ngFor="let demand of demands" color="{{ utils.getColor(demand) }}">
+      <p> {{ getProducts(demand) }} </p>
+      <ion-modal trigger="demand{{demand.id}}" >
+        <ng-template>
+          
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+  </ion-list>
+</div>
