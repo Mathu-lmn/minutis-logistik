@@ -1,7 +1,15 @@
 import { Component, NgModule } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonSegment, IonLabel, IonSegmentButton } from '@ionic/angular/standalone';
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonSegment,
+  IonLabel,
+  IonSegmentButton,
+} from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
-import {LogLMyDemandsComponent} from './log-l/log-l-my-demands/log-l-my-demands.component';
+import { LogLMyDemandsComponent } from './log-l/log-l-my-demands/log-l-my-demands.component';
 import { LogLAllDemandsComponent } from './log-l/all-demands/all-demands.component';
 import { LogSAllDemandsComponent } from './log-s/all-demands/all-demands.component';
 import { LogSMyDemandsComponent } from './log-s/my-demands/my-demands.component';
@@ -11,7 +19,20 @@ import { LogSMyDemandsComponent } from './log-s/my-demands/my-demands.component'
   templateUrl: 'logistics.page.html',
   styleUrls: ['logistics.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonLabel, IonTitle, IonContent, IonSegment, IonSegmentButton, LogLMyDemandsComponent, LogLAllDemandsComponent, LogSAllDemandsComponent, LogSMyDemandsComponent, CommonModule]
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonLabel,
+    IonTitle,
+    IonContent,
+    IonSegment,
+    IonSegmentButton,
+    LogLMyDemandsComponent,
+    LogLAllDemandsComponent,
+    LogSAllDemandsComponent,
+    LogSMyDemandsComponent,
+    CommonModule,
+  ],
 })
 export class LogisticsPage {
   isER: boolean = true; // pour la démonstration, changez cette valeur pour le point de vue du secouriste & du logisticien
@@ -23,5 +44,4 @@ export class LogisticsPage {
   segmentChanged(event: any) {
     this.segmentValue = event.detail.value;
   }
-
 }

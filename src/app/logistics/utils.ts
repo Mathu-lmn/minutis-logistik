@@ -1,25 +1,25 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
-import { DemandPriority, DemandStatus } from "./types";
+import { DemandPriority, DemandStatus } from './types';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class Utils {
-  getIcon(status: string) {
+  getIcon(status: DemandStatus) {
     switch (status) {
-      case 'Pending':
-      return 'assets/icon/pending.svg';
-      case 'Assigned':
-      return 'assets/icon/assigned.svg';
-      case 'Ready-to-Ship':
-      return 'assets/icon/rts.svg';
-      case 'Shipping':
-      return 'assets/icon/shipping.svg';
-      case 'Delivered':
-      return 'assets/icon/delivered.svg';
+      case DemandStatus.Pending:
+        return 'assets/icon/pending.svg';
+      case DemandStatus.Assigned:
+        return 'assets/icon/assigned.svg';
+      case DemandStatus.ReadyToShip:
+        return 'assets/icon/rts.svg';
+      case DemandStatus.Shipping:
+        return 'assets/icon/shipping.svg';
+      case DemandStatus.Delivered:
+        return 'assets/icon/delivered.svg';
       default:
-      return 'hourglass-outline';
+        return 'hourglass-outline';
     }
   }
 

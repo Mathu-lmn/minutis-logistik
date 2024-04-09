@@ -13,7 +13,13 @@ import {
   IonIcon,
   IonListHeader,
 } from '@ionic/angular/standalone';
-import { hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline } from 'ionicons/icons';
+import {
+  hourglassOutline,
+  storefrontOutline,
+  cubeOutline,
+  sendOutline,
+  checkmarkDoneOutline,
+} from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { DemandStatus, DemandPriority, Demand } from '../../types';
 import { Utils } from '../../utils';
@@ -57,11 +63,7 @@ let demands: Demand[] = [
     priority: DemandPriority.High,
     timestampDemand: '2021-07-04',
     comment: 'Comment 4',
-    content: [
-      tableData[1],
-      tableData[2],
-      tableData[0],
-    ],
+    content: [tableData[1], tableData[2], tableData[0]],
   },
   {
     id: 5,
@@ -110,12 +112,17 @@ let demands: Demand[] = [
     IonListHeader,
   ],
 })
-
 export class LogSMyDemandsComponent implements OnInit {
   demands: Demand[];
 
   constructor(public utils: Utils) {
-    addIcons({ hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline });
+    addIcons({
+      hourglassOutline,
+      storefrontOutline,
+      cubeOutline,
+      sendOutline,
+      checkmarkDoneOutline,
+    });
     this.demands = demands;
   }
 
