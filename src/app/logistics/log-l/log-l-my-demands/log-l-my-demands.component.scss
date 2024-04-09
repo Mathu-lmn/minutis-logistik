@@ -1,0 +1,19 @@
+// ion button style
+ion-button {
+  --background: #f4f4f4;
+  --border-radius: 10px;
+  --box-shadow: 0 0 0 0;
+  --color: #000;
+  // fix width
+  width: 100%;
+  // fix height
+  height: 40px;
+  // overflow*
+  
+}
+
+p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
