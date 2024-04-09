@@ -1,9 +1,21 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonContent, IonText, IonModal, IonList, IonLabel, IonItem, IonInfiniteScroll, IonToolbar, IonHeader, IonTitle , IonButton} from '@ionic/angular/standalone';
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonSegment,
+  IonLabel,
+  IonButton,
+  IonList,
+  IonItem,
+  IonIcon,
+} from '@ionic/angular/standalone';
+import { hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 import { DemandPriority, DemandStatus, Demand } from '../../types';
 import { Utils } from '../../utils';
-
 
 let tableData = [
   { label: 'Medikit', quantity: '1', item: 'medkit' },
@@ -124,20 +136,31 @@ let demands: Demand[] = [
   },
 ];
 
-
 @Component({
-  selector: 'app-log-l-my-demands',
-  templateUrl: './my-demands.component.html',
-  styleUrls: ['./my-demands.component.scss'],
+  selector: 'app-s-all-demands',
+  templateUrl: './all-demands.component.html',
+  styleUrls: ['./all-demands.component.scss'],
   standalone: true,
-  imports: [IonContent, IonText, IonList, IonLabel, IonItem, IonInfiniteScroll, IonToolbar, IonHeader, IonTitle, IonModal, CommonModule, IonButton],
+  imports: [
+    CommonModule,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonSegment,
+    IonButton,
+    IonLabel,
+    IonList,
+    IonItem,
+    IonIcon,
+  ],
 })
-export class LogLMyDemandsComponent  implements OnInit {
+
+export class LogSAllDemandsComponent implements OnInit {
   demands: Demand[];
-  
-  @ViewChild(IonModal) modal: any;
 
   constructor(public utils: Utils) {
+    addIcons({ hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline });
     this.demands = demands;
   }
 
@@ -151,13 +174,7 @@ export class LogLMyDemandsComponent  implements OnInit {
     console.log('showDemand', demand);
   }
 
-  log(demand: Demand) {
-    console.log(demand);
+  ngOnInit() {
+    console.log('AllDemandsComponent ngOnInit');
   }
-
-  
-
-  // lint:disable-next-line: use-lifecycle-interface
-  ngOnInit() {}
-
 }

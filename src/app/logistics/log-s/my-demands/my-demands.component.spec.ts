@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { LogLAllDemandsComponent } from './all-demands.component';
+import { LogSMyDemandsComponent } from './my-demands.component';
 
-describe('AllDemandsComponent', () => {
-  let component: LogLAllDemandsComponent;
-  let fixture: ComponentFixture<LogLAllDemandsComponent>;
+describe('LogSMyDemandsComponent', () => {
+  let component: LogSMyDemandsComponent;
+  let fixture: ComponentFixture<LogSMyDemandsComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [LogLAllDemandsComponent],
+      imports: [LogSMyDemandsComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(LogLAllDemandsComponent);
+    fixture = TestBed.createComponent(LogSMyDemandsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

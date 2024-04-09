@@ -11,11 +11,11 @@ import {
   IonList,
   IonItem,
   IonIcon,
+  IonListHeader,
 } from '@ionic/angular/standalone';
 import { hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
-import { DemandPriority, DemandStatus, Demand } from '../../types';
-
+import { DemandStatus, DemandPriority, Demand } from '../../types';
 import { Utils } from '../../utils';
 
 let tableData = [
@@ -29,7 +29,7 @@ let demands: Demand[] = [
     id: 1,
     status: DemandStatus.ReadyToShip,
     assigned: false,
-    priority: DemandPriority.Urgent,
+    priority: DemandPriority.High,
     timestampDemand: '2021-07-01',
     comment: 'Comment 1',
     content: [tableData[0]],
@@ -51,17 +51,8 @@ let demands: Demand[] = [
     ],
   },
   {
-    id: 3,
-    status: DemandStatus.Assigned,
-    assigned: false,
-    priority: DemandPriority.Low,
-    timestampDemand: '2021-07-03',
-    comment: 'Comment 3',
-    content: [tableData[2]],
-  },
-  {
     id: 4,
-    status: DemandStatus.Shipping,
+    status: DemandStatus.Assigned,
     assigned: false,
     priority: DemandPriority.High,
     timestampDemand: '2021-07-04',
@@ -83,64 +74,26 @@ let demands: Demand[] = [
   },
   {
     id: 6,
-    status: DemandStatus.Pending,
-    assigned: false,
-    priority: DemandPriority.Low,
-    timestampDemand: '2021-07-06',
-    comment: 'Comment 6',
-    content: [tableData[1]],
-  },
-  {
-    id: 7,
-    status: DemandStatus.ReadyToShip,
-    assigned: false,
-    priority: DemandPriority.High,
-    timestampDemand: '2021-07-07',
-    comment: 'Comment 7',
-    content: [tableData[2]],
-  },
-  {
-    id: 8,
-    status: DemandStatus.Pending,
-    assigned: false,
-    priority: DemandPriority.Medium,
-    timestampDemand: '2021-07-08',
-    comment: 'Comment 8',
-    content: [tableData[0]],
-  },
-  {
-    id: 9,
-    status: DemandStatus.Assigned,
-    assigned: false,
-    priority: DemandPriority.Low,
-    timestampDemand: '2021-07-09',
-    comment: 'Comment 9',
-    content: [tableData[1]],
-  },
-  {
-    id: 10,
-    status: DemandStatus.Shipping,
-    assigned: false,
-    priority: DemandPriority.High,
-    timestampDemand: '2021-07-10',
-    comment: 'Comment 10',
-    content: [tableData[2]],
-  },
-  {
-    id: 11,
     status: DemandStatus.Delivered,
     assigned: false,
     priority: DemandPriority.Medium,
-    timestampDemand: '2021-07-11',
-    comment: 'Comment 11',
-    content: [tableData[0]],
+    timestampDemand: '2021-07-02',
+    comment: 'Comment 2',
+    content: [
+      tableData[2],
+      tableData[1],
+      tableData[0],
+      tableData[1],
+      tableData[1],
+      tableData[1],
+    ],
   },
 ];
 
 @Component({
-  selector: 'app-all-demands',
-  templateUrl: './all-demands.component.html',
-  styleUrls: ['./all-demands.component.scss'],
+  selector: 'app-s-my-demands',
+  templateUrl: './my-demands.component.html',
+  styleUrls: ['./my-demands.component.scss'],
   standalone: true,
   imports: [
     CommonModule,
@@ -154,24 +107,25 @@ let demands: Demand[] = [
     IonList,
     IonItem,
     IonIcon,
+    IonListHeader,
   ],
 })
 
-export class LogLAllDemandsComponent implements OnInit {
+export class LogSMyDemandsComponent implements OnInit {
   demands: Demand[];
 
   constructor(public utils: Utils) {
-    this.demands = demands;
     addIcons({ hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline });
+    this.demands = demands;
   }
 
-  getProducts(demand: Demand) {
+  getProducts(demand: any) {
     return demand.content
       .map((item: any) => item.label + ' (' + item.quantity + ')')
       .join(', ');
   }
 
-  showDemand(demand: Demand) {
+  showDemand(demand: any) {
     console.log('showDemand', demand);
   }
 
