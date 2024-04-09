@@ -156,19 +156,19 @@ let demands: Demand[] = [
 })
 
 export class LogSAllDemandsComponent implements OnInit {
-  demands: demand[];
+  demands: Demand[];
   constructor() {
     addIcons({ hourglassOutline, storefrontOutline, cubeOutline, sendOutline, checkmarkDoneOutline });
     this.demands = demands;
   }
 
-  getProducts(demand: demand) {
+  getProducts(demand: Demand) {
     return demand.content
       .map((item: any) => item.label + ' (' + item.quantity + ')')
       .join(', ');
   }
 
-  showDemand(demand: demand) {
+  showDemand(demand: Demand) {
     console.log('showDemand', demand);
   }
 
