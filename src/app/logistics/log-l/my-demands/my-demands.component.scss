@@ -23,4 +23,8 @@ ion-modal {
       font-size: large;
     }
   }
+  ion-content {
+    --padding-start: 3%;
+    --padding-top: 2%;
+  }
 }

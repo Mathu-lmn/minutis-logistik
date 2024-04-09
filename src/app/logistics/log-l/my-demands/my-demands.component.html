@@ -7,12 +7,14 @@
           <ion-header [translucent]="false">
             <ion-toolbar>
               <ion-icon name="close-outline" size="large"></ion-icon>
-              <ion-title slot="end">Détails de la demande</ion-title>
+              <ion-title slot="primary">Détails de la demande</ion-title>
             </ion-toolbar>
           </ion-header>
 
           <ion-content>
-            HI!
+            <ion-text>Priorité : <ion-badge style="vertical-align: bottom;" color="{{ utils.getBgColor(demand.priority) }}"><b>{{ demand.priority }}</b></ion-badge></ion-text>
+            <div id="map{{demand.id}}"></div>
+            <app-map lat="demand.location.latitude" lng="demand.location.longitude"></app-map>
           </ion-content>
         </ng-template>
       </ion-modal>
