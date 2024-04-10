@@ -35,4 +35,19 @@ export class Utils {
         return 'success';
     }
   }
+
+  getStatusLocale(status: DemandStatus) {
+    switch (status) {
+      case DemandStatus.Pending:
+        return 'En attente';
+      case DemandStatus.Assigned:
+        return 'Assignée';
+      case DemandStatus.ReadyToShip:
+        return 'Prête à être expédiée';
+      case DemandStatus.Shipping:
+        return 'En cours de livraison';
+      case DemandStatus.Delivered:
+        return 'Livrée';
+    }
+  }
 }
