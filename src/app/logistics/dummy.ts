@@ -12,7 +12,7 @@ export const demands: Demand[] = [
       status: DemandStatus.ReadyToShip,
       assigned: false,
       priority: DemandPriority.Urgent,
-      timestampDemand: '2021-07-01',
+      timestampDemand: 1712733254155,
       comment: 'Comment 1',
       location: {
         latitude: 45.7431141144872,
@@ -25,7 +25,7 @@ export const demands: Demand[] = [
       status: DemandStatus.Pending,
       assigned: false,
       priority: DemandPriority.Medium,
-      timestampDemand: '2021-07-02',
+      timestampDemand: 1712577345000,
       comment: 'Comment 2',
       location: {
         latitude: 45.7431141144872,
@@ -45,7 +45,7 @@ export const demands: Demand[] = [
       status: DemandStatus.Assigned,
       assigned: false,
       priority: DemandPriority.Low,
-      timestampDemand: '2021-07-03',
+      timestampDemand: 1712737320000,
       comment: 'Comment 3',
       location: {
         latitude: 45.7431141144872,
@@ -58,7 +58,7 @@ export const demands: Demand[] = [
       status: DemandStatus.Shipping,
       assigned: false,
       priority: DemandPriority.High,
-      timestampDemand: '2021-07-04',
+      timestampDemand: 1712728959000,
       comment: 'Comment 4',
       location: {
         latitude: 45.7431141144872,
@@ -75,7 +75,7 @@ export const demands: Demand[] = [
       status: DemandStatus.Delivered,
       assigned: false,
       priority: DemandPriority.Medium,
-      timestampDemand: '2021-07-05',
+      timestampDemand: 1712720598000,
       comment: 'Comment 5',
       location: {
         latitude: 45.7431141144872,
@@ -88,7 +88,7 @@ export const demands: Demand[] = [
       status: DemandStatus.Pending,
       assigned: false,
       priority: DemandPriority.Low,
-      timestampDemand: '2021-07-06',
+      timestampDemand: 1712712237000,
       comment: 'Comment 6',
       location: {
         latitude: 45.7431141144872,
@@ -101,7 +101,7 @@ export const demands: Demand[] = [
       status: DemandStatus.ReadyToShip,
       assigned: false,
       priority: DemandPriority.High,
-      timestampDemand: '2021-07-07',
+      timestampDemand: 1712703876000,
       comment: 'Comment 7',
       location: {
         latitude: 45.7431141144872,
@@ -114,7 +114,7 @@ export const demands: Demand[] = [
       status: DemandStatus.Pending,
       assigned: false,
       priority: DemandPriority.Medium,
-      timestampDemand: '2021-07-08',
+      timestampDemand: 1712598157000,
       comment: 'Comment 8',
       location: {
         latitude: 45.7431141144872,
@@ -127,7 +127,7 @@ export const demands: Demand[] = [
       status: DemandStatus.Assigned,
       assigned: false,
       priority: DemandPriority.Low,
-      timestampDemand: '2021-07-09',
+      timestampDemand: 1712601599000,
       comment: 'Comment 9',
       location: {
         latitude: 45.7431141144872,
@@ -140,7 +140,7 @@ export const demands: Demand[] = [
       status: DemandStatus.Shipping,
       assigned: false,
       priority: DemandPriority.High,
-      timestampDemand: '2021-07-10',
+      timestampDemand: 1712549009000,
       comment: 'Comment 10',
       location: {
         latitude: 45.7431141144872,
@@ -153,7 +153,7 @@ export const demands: Demand[] = [
       status: DemandStatus.Delivered,
       assigned: false,
       priority: DemandPriority.Medium,
-      timestampDemand: '2021-07-11',
+      timestampDemand: 1712610433000,
       comment: 'Comment 11',
       location: {
         latitude: 45.7431141144872,

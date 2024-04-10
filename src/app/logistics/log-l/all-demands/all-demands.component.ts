@@ -24,6 +24,8 @@ import { MapComponent } from 'src/app/map/map.component';
   standalone: true,
   imports: [
     MapComponent,
+    I.IonItemGroup,
+    I.IonItemDivider,
     I.IonGrid,
     I.IonRow,
     I.IonBadge,
@@ -47,8 +49,9 @@ import { MapComponent } from 'src/app/map/map.component';
   ],
 })
 export class LogLAllDemandsComponent implements OnInit {
-  demands: Demand[];
-
+  pendingDemands: Demand[]; // Demands with status 'Pending'
+  otherDemands: Demand[]; // Demands with status 'Assigned'
+  isDeliveryPerson: boolean = false; // for demonstration, change this value for the delivery person's point of view
   @ViewChildren(I.IonModal) modals: any[] = [];
 
   constructor(public utils: Utils) {
@@ -60,8 +63,54 @@ export class LogLAllDemandsComponent implements OnInit {
       checkmarkDoneOutline,
       closeOutline,
     });
-    this.demands = demands;
+    this.pendingDemands = demands.filter(
+        (demand) => {
+          // if this.isDeliveryPerson is true, we only show demands with status 'ReadyToShip', if this.isPreparer is true, we only show demands with status 'Pending'
+          if (this.isDeliveryPerson) {
+            return demand.status === DemandStatus.ReadyToShip;
+          }
+          return demand.status === DemandStatus.Pending;
+        }
+    );
+    this.pendingDemands.sort((a, b) => {
+      if (a.priority === b.priority) {
+        return a.timestampDemand - b.timestampDemand;
+      }
+      return Object.values(DemandPriority).indexOf(a.priority) - Object.values(DemandPriority).indexOf(b.priority);
+    });
+    this.otherDemands = demands.filter(
+      (demand) => {
+        if (this.isDeliveryPerson) {
+          return demand.status !== DemandStatus.ReadyToShip;
+        }
+        return demand.status !== DemandStatus.Pending;
+      }
+    );
+    this.otherDemands.sort((a, b) => {
+        return a.timestampDemand - b.timestampDemand;
+    });
   }
+
+  getTimeDifference(timestamp: number): string {
+    const now = Date.now();
+    const difference = now - timestamp;
+    const minutes = Math.floor(difference / 60000); // Convert milliseconds to minutes
+
+    if (minutes < 1) {
+      return "à l'instant";
+    } else if (minutes < 60) {
+      return `Il y a ${minutes} minute${minutes > 1 ? 's' : ''}`;
+    } else {
+      const hours = Math.floor(minutes / 60);
+      if (hours < 24) {
+        return `Il y a ${hours} heure${hours > 1 ? 's' : ''}`;
+      } else {
+        const days = Math.floor(hours / 24);
+        return `Il y a ${days} jour${days > 1 ? 's' : ''}`;
+      }
+    }
+  }
+
 
   getProducts(demand: Demand) {
     return demand.content

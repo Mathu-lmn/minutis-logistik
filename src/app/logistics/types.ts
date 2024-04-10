@@ -18,7 +18,7 @@ export type Demand = {
   status: DemandStatus;
   assigned: boolean;
   priority: DemandPriority;
-  timestampDemand: string;
+  timestampDemand: number;
   comment: string;
   location: {
     latitude: number;
