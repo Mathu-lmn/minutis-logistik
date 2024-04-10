@@ -95,7 +95,7 @@ export class LogisticsPage {
       status: DemandStatus.Pending,
       assigned: false,
       priority: DemandPriority.Medium,
-      timestampDemand: new Date().toISOString(),
+      timestampDemand: new Date().getTime(),
       comment:'',
       location: this.rdmCoord(), // replace by backend
       content: [],
