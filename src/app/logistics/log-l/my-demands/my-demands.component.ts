@@ -1,15 +1,13 @@
-import { AfterViewInit, Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { chatboxEllipsesOutline, closeOutline } from 'ionicons/icons';
 import { Demand, DemandStatus, DemandPriority } from '../../types';
 import { addIcons } from 'ionicons';
-import { ModalController } from '@ionic/angular';
 import * as I from '@ionic/angular/standalone';
 
 import { demands } from '../../dummy';
 import { Utils } from '../../utils';
 import { MapComponent } from 'src/app/map/map.component';
-
 
 @Component({
   selector: 'app-my-demands',
@@ -44,7 +42,7 @@ import { MapComponent } from 'src/app/map/map.component';
 export class LogLMyDemandsComponent implements OnInit, AfterViewInit {
   myDemands: Demand[];
   isCurrentlyShipping: boolean = false;
-  
+
   @ViewChildren(I.IonModal) modals: any[] = [];
 
   constructor(public utils: Utils) {
@@ -52,20 +50,23 @@ export class LogLMyDemandsComponent implements OnInit, AfterViewInit {
       if (a.priority === b.priority) {
         return a.timestampDemand - b.timestampDemand;
       }
-      return Object.values(DemandPriority).indexOf(a.priority) - Object.values(DemandPriority).indexOf(b.priority);
+      return (
+        Object.values(DemandPriority).indexOf(a.priority) -
+        Object.values(DemandPriority).indexOf(b.priority)
+      );
     });
     addIcons({
       closeOutline,
       chatboxEllipsesOutline,
     });
   }
-  
+
   getProducts(demand: Demand) {
     return demand.content
-    .map((item: any) => item.label + ' (' + item.quantity + ')')
-    .join(', ');
+      .map((item: any) => item.label + ' (' + item.quantity + ')')
+      .join(', ');
   }
-  
+
   showDemand(demand: Demand) {
     console.log('showDemand', demand);
   }
@@ -89,17 +90,17 @@ export class LogLMyDemandsComponent implements OnInit, AfterViewInit {
       }
     }
   }
-  
+
   log(demand: Demand) {
     console.log(demand);
   }
 
   openChat(event: Event, demand: Demand) {
     event.stopPropagation();
-    // call au backend pour ouvrir le chat
+    // TODO : call backend
     console.log('openChat', demand);
   }
-  
+
   markAsShipping(event: Event) {
     if (this.checkIfCurrentlyShipping()) {
       // erreur OU return; pour annuler l'action
@@ -108,7 +109,7 @@ export class LogLMyDemandsComponent implements OnInit, AfterViewInit {
       // envoi d'un message au backend, puis...
       myDemand.status = DemandStatus.Shipping;
     }
-    this.ngOnInit()
+    this.ngOnInit();
   }
 
   checkIfCurrentlyShipping() {
@@ -118,15 +119,14 @@ export class LogLMyDemandsComponent implements OnInit, AfterViewInit {
   }
 
   dismissModal() {
-    this.modals.forEach(m => m.dismiss(null, 'cancel'))
-  }
-  
-  // lint:disable-next-line: use-lifecycle-interface
-  ngOnInit() {}
-  
-  ngAfterViewInit(): void {
-    // this.checkIfCurrentlyShipping();
-    console.log("isShipping=" + this.isCurrentlyShipping);
+    this.modals.forEach((m) => m.dismiss(null, 'cancel'));
   }
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
+  ngOnInit() {}
+
+  ngAfterViewInit(): void {
+    // this.checkIfCurrentlyShipping();
+    console.log('isShipping=' + this.isCurrentlyShipping);
+  }
 }

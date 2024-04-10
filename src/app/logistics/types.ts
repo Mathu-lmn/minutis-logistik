@@ -24,13 +24,13 @@ export type Demand = {
   location: {
     latitude: number;
     longitude: number;
-  },
+  };
   content: { label: string; quantity: number; item: string }[];
 };
 
 export type Message = {
   content: string;
-  from: "me" | "you";
-}
+  from: 'me' | 'you';
+};
 
-export type Item = {id: number, name: string, comment:string}
+export type Item = { id: number; name: string; comment: string };

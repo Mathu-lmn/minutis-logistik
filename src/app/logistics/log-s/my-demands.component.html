@@ -25,14 +25,14 @@
               <ion-text>Priorité : <ion-badge style="vertical-align: bottom;"
                   color="{{ utils.getBgColor(demand.priority) }}"><b>{{ demand.priority }}</b>
                 </ion-badge></ion-text>
-              
+
               <ng-container *ngIf="demand.status === 'Shipping'">
                 <ion-card>
                   <ion-card-content>
                     <div id="map{{demand.id}}" style="height: 300px;">
-                    <app-map lat="{{demand.location.latitude}}" lng="{{demand.location.longitude}}"
-                    mapId="{{demand.id}}"></app-map>
-                  </div>
+                      <app-map lat="{{demand.location.latitude}}" lng="{{demand.location.longitude}}"
+                        mapId="{{demand.id}}"></app-map>
+                    </div>
                   </ion-card-content>
                 </ion-card>
               </ng-container>

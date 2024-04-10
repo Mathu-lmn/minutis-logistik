@@ -9,22 +9,19 @@ ion-title {
 }
 
 ion-fab-button {
-    // stick to the bottom right above the footer
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    // fix width
-    width: 50px;
-    // fix height
-    height: 50px;
-
+  // stick to the bottom right above the footer
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  // fix width
+  width: 50px;
+  // fix height
+  height: 50px;
 }
 
 ion-icon {
-    color: #f00;
-    --ionicon-stroke-width: 64px;
-    width: 40px;
-    height: 40px;   
-}    
-
-
+  color: #f00;
+  --ionicon-stroke-width: 64px;
+  width: 40px;
+  height: 40px;
+}

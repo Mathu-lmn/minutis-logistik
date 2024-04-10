@@ -14,7 +14,8 @@
   </ion-item>
   <!-- Les lignes suivantes sont pour la démonstration, en réalité on copierait le contenu de ce if -->
   <div *ngIf="!isER; else ER">
-    <ion-segment color="danger" value="all-orders" (ionChange)="segmentChanged($event)" scrollable> <!-- Valeur par défaut -->
+    <ion-segment color="danger" value="all-orders" (ionChange)="segmentChanged($event)" scrollable>
+      <!-- Valeur par défaut -->
       <ion-segment-button value="all-orders">
         <ion-label class="segment-label">Toutes les demandes</ion-label>
       </ion-segment-button>
@@ -38,47 +39,44 @@
             <ion-icon (click)="dismissModal()" name="close-outline" size="large" slot="start"></ion-icon>
           </ion-toolbar>
         </ion-header>
-        
+
         <ion-content [fullscreen]="true">
-        
+
           <ion-title>Contenu</ion-title>
           <ion-list>
             <ion-item *ngFor="let elt of currentDemand.content">
               <div *ngIf="elt.label == ''">
                 <ion-input label="Quantité" type="number" placeholder="0"></ion-input>
                 <ion-item>
-                  <ion-select 
-                    label="Objet" 
-                    multiple="false" 
-                    interface="popover" 
-                    value="Autre"
-                    (ionChange)="saveSelection($event)"
-                    >
+                  <ion-select label="Objet" multiple="false" interface="popover" value="Autre"
+                    (ionChange)="saveSelection($event)">
                     <ion-select-option value="Autre">Autre</ion-select-option>
-                    <ion-select-option *ngFor="let item of listItems" [value]="item.id">{{item.name}}</ion-select-option>
+                    <ion-select-option *ngFor="let item of listItems"
+                      [value]="item.id">{{item.name}}</ion-select-option>
                   </ion-select>
                 </ion-item>
-                <ion-input aria-label="Autre objet" placeholder="Autre objet" type="text" *ngIf="selection=='Autre'"></ion-input>
+                <ion-input aria-label="Autre objet" placeholder="Autre objet" type="text"
+                  *ngIf="selection=='Autre'"></ion-input>
               </div>
             </ion-item>
           </ion-list>
-          
+
           <ion-button (click)="addItem()">
             <ion-icon slot="icon-only" name="add"></ion-icon>
           </ion-button>
-          <br/>
+          <br />
           <ion-button color="danger" id="save" (click)="saveDemand()">
             Valider demande
           </ion-button>
         </ion-content>
-        
+
       </ng-template>
     </ion-modal>
     <ion-fab-button id="new">
-      
+
       <ion-icon name="add"></ion-icon>
-      
-  </ion-fab-button>
+
+    </ion-fab-button>
   </ng-template>
 
 

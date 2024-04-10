@@ -63,31 +63,30 @@ export class LogLAllDemandsComponent implements OnInit {
       checkmarkDoneOutline,
       closeOutline,
     });
-    this.pendingDemands = demands.filter(
-        (demand) => {
-          // if this.isDeliveryPerson is true, we only show demands with status 'ReadyToShip', if this.isPreparer is true, we only show demands with status 'Pending'
-          if (this.isDeliveryPerson) {
-            return demand.status === DemandStatus.ReadyToShip;
-          }
-          return demand.status === DemandStatus.Pending;
-        }
-    );
+    this.pendingDemands = demands.filter((demand) => {
+      // if this.isDeliveryPerson is true, we only show demands with status 'ReadyToShip', if this.isPreparer is true, we only show demands with status 'Pending'
+      if (this.isDeliveryPerson) {
+        return demand.status === DemandStatus.ReadyToShip;
+      }
+      return demand.status === DemandStatus.Pending;
+    });
     this.pendingDemands.sort((a, b) => {
       if (a.priority === b.priority) {
         return a.timestampDemand - b.timestampDemand;
       }
-      return Object.values(DemandPriority).indexOf(a.priority) - Object.values(DemandPriority).indexOf(b.priority);
+      return (
+        Object.values(DemandPriority).indexOf(a.priority) -
+        Object.values(DemandPriority).indexOf(b.priority)
+      );
     });
-    this.otherDemands = demands.filter(
-      (demand) => {
-        if (this.isDeliveryPerson) {
-          return demand.status !== DemandStatus.ReadyToShip;
-        }
-        return demand.status !== DemandStatus.Pending;
+    this.otherDemands = demands.filter((demand) => {
+      if (this.isDeliveryPerson) {
+        return demand.status !== DemandStatus.ReadyToShip;
       }
-    );
+      return demand.status !== DemandStatus.Pending;
+    });
     this.otherDemands.sort((a, b) => {
-        return a.timestampDemand - b.timestampDemand;
+      return a.timestampDemand - b.timestampDemand;
     });
   }
 
@@ -111,7 +110,6 @@ export class LogLAllDemandsComponent implements OnInit {
     }
   }
 
-
   getProducts(demand: Demand) {
     return demand.content
       .map((item: any) => item.label + ' (' + item.quantity + ')')
@@ -123,7 +121,7 @@ export class LogLAllDemandsComponent implements OnInit {
   }
 
   dismissModal() {
-    this.modals.forEach(m => m.dismiss(null, 'cancel'))
+    this.modals.forEach((m) => m.dismiss(null, 'cancel'));
   }
 
   ngOnInit() {

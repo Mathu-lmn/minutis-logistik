@@ -6,7 +6,8 @@
       <ion-item detail="false" button color="{{ utils.getBgColor(demand.priority) }}" id="demand{{demand.id}}">
         <ion-icon slot="start" size="large" color="primary" src="{{ utils.getIcon(demand.status) }}"></ion-icon>
         <p>{{getProducts(demand)}}</p>
-        <ion-badge style="margin-left:10px;" slot="end" color="{{ utils.getBgColor(demand.priority) }}">{{ getTimeDifference(demand.timestampDemand) }}</ion-badge>
+        <ion-badge style="margin-left:10px;" slot="end" color="{{ utils.getBgColor(demand.priority) }}">{{
+          getTimeDifference(demand.timestampDemand) }}</ion-badge>
         <ion-modal trigger="demand{{demand.id}}">
           <ng-template>
             <ion-header [translucent]="false">
@@ -19,14 +20,14 @@
             <ion-content>
               <ion-text>Priorité : <ion-badge style="vertical-align: bottom;"
                   color="{{ utils.getBgColor(demand.priority) }}"><b>{{ demand.priority }}</b></ion-badge></ion-text>
-                  <ion-card>
-                    <ion-card-content>
-                      <div id="map{{demand.id}}" style="height: 300px;">
-                      <app-map lat="{{demand.location.latitude}}" lng="{{demand.location.longitude}}"
+              <ion-card>
+                <ion-card-content>
+                  <div id="map{{demand.id}}" style="height: 300px;">
+                    <app-map lat="{{demand.location.latitude}}" lng="{{demand.location.longitude}}"
                       mapId="{{demand.id}}"></app-map>
-                    </div>
-                    </ion-card-content>
-                  </ion-card>
+                  </div>
+                </ion-card-content>
+              </ion-card>
               <ion-card>
                 <ion-card-header>
                   <ion-card-title>Contenu</ion-card-title>
@@ -76,14 +77,14 @@
             <ion-content>
               <ion-text>Priorité : <ion-badge style="vertical-align: bottom;"
                   color="{{ utils.getBgColor(demand.priority) }}"><b>{{ demand.priority }}</b></ion-badge></ion-text>
-                  <ion-card>
-                    <ion-card-content>
-                      <div id="map{{demand.id}}" style="height: 300px;">
-                      <app-map lat="{{demand.location.latitude}}" lng="{{demand.location.longitude}}"
+              <ion-card>
+                <ion-card-content>
+                  <div id="map{{demand.id}}" style="height: 300px;">
+                    <app-map lat="{{demand.location.latitude}}" lng="{{demand.location.longitude}}"
                       mapId="{{demand.id}}"></app-map>
-                    </div>
-                    </ion-card-content>
-                  </ion-card>
+                  </div>
+                </ion-card-content>
+              </ion-card>
               <ion-card>
                 <ion-card-header>
                   <ion-card-title>Contenu</ion-card-title>

@@ -10,12 +10,11 @@ import {
   checkmarkDoneOutline,
 } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
-import { DemandStatus, DemandPriority, Demand } from '../../types';
-import { Utils } from '../../utils';
+import { DemandPriority, Demand } from '../types';
+import { Utils } from '../utils';
 
-import { demands } from '../../dummy';
+import { demands } from '../dummy';
 import { MapComponent } from 'src/app/map/map.component';
-
 
 @Component({
   selector: 'app-s-my-demands',
@@ -66,7 +65,10 @@ export class LogSMyDemandsComponent implements OnInit {
       if (a.priority === b.priority) {
         return a.timestampDemand - b.timestampDemand;
       }
-      return Object.values(DemandPriority).indexOf(a.priority) - Object.values(DemandPriority).indexOf(b.priority);
+      return (
+        Object.values(DemandPriority).indexOf(a.priority) -
+        Object.values(DemandPriority).indexOf(b.priority)
+      );
     });
   }
 
@@ -101,7 +103,7 @@ export class LogSMyDemandsComponent implements OnInit {
   }
 
   dismissModal() {
-    this.modals.forEach(m => m.dismiss(null, 'cancel'))
+    this.modals.forEach((m) => m.dismiss(null, 'cancel'));
   }
 
   ngOnInit() {

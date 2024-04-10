@@ -1,4 +1,4 @@
-import { Component, NgModule, ViewChildren } from '@angular/core';
+import { Component, ViewChildren } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -17,18 +17,15 @@ import {
   IonIcon,
   IonButton,
   IonFabButton,
-} 
-
-from '@ionic/angular/standalone';
+} from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { LogLMyDemandsComponent } from './log-l/my-demands/my-demands.component';
 import { LogLAllDemandsComponent } from './log-l/all-demands/all-demands.component';
-import { LogSMyDemandsComponent } from './log-s/my-demands/my-demands.component';
+import { LogSMyDemandsComponent } from './log-s/my-demands.component';
 import { Demand, DemandPriority, DemandStatus, Item } from './types';
 import { listItems as IList } from './dummy';
 import { addIcons } from 'ionicons';
 import { add } from 'ionicons/icons';
-
 
 @Component({
   selector: 'app-logistics',
@@ -62,22 +59,19 @@ import { add } from 'ionicons/icons';
 export class LogisticsPage {
   isER: boolean = false; // pour la démonstration, changez cette valeur pour le point de vue du secouriste & du logisticien
   segmentValue: string;
-  listItems: Item[] = IList ;
+  listItems: Item[] = IList;
   static iD: number = 0;
   static contentID: number = 1;
-  selection: String = "Autre"
+  selection: String = 'Autre';
   currentDemand: Demand;
 
-
   @ViewChildren(IonModal) modals: any[] = [];
-
 
   constructor() {
     this.segmentValue = 'all-orders';
     this.currentDemand = this.initCurrentDemand();
-    addIcons({add});
+    addIcons({ add });
   }
-
 
   segmentChanged(event: any) {
     this.segmentValue = event.detail.value;
@@ -87,28 +81,28 @@ export class LogisticsPage {
     this.isER = !this.isER;
   }
 
-
   initCurrentDemand() {
-    
     return {
       id: ++LogisticsPage.iD,
       status: DemandStatus.Pending,
       assigned: false,
       priority: DemandPriority.Medium,
       timestampDemand: new Date().getTime(),
-      comment:'',
+      comment: '',
       location: this.rdmCoord(), // replace by backend
       content: [],
-      statusHistory: [{status: DemandStatus.Pending, timestamp: new Date().getTime()}]
-    }
+      statusHistory: [
+        { status: DemandStatus.Pending, timestamp: new Date().getTime() },
+      ],
+    };
   }
 
   rdmCoord() {
-    return {latitude: Math.random(), longitude: Math.random()}
+    return { latitude: Math.random(), longitude: Math.random() };
   }
 
   addItem() {
-    this.currentDemand.content.push({label: '', quantity: 0, item: ''});
+    this.currentDemand.content.push({ label: '', quantity: 0, item: '' });
   }
 
   saveSelection(event: CustomEvent) {
@@ -117,14 +111,12 @@ export class LogisticsPage {
   }
 
   saveDemand() {
-    this.dismissModal()
+    this.dismissModal();
     // add backend to save demand
-    return
+    return;
   }
 
   dismissModal() {
-    this.modals.forEach(m => m.dismiss(null, 'cancel'))
+    this.modals.forEach((m) => m.dismiss(null, 'cancel'));
   }
-
-
 }

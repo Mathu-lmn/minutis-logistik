@@ -2,20 +2,23 @@
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <div *ngIf="this.isCurrentlyShipping === true; then cannotShip else canShip"></div>
-      <ng-template #canShip><ion-button class="ion-justify-content-center" color="success" (click)="markAsShipping($event)">
-        <ion-icon slot="start" src="/assets/icon/shipping.svg"></ion-icon> Commencer ma course
-      </ion-button></ng-template>
-      <ng-template #cannotShip><ion-button  class="ion-justify-content-center" color="success" [disabled]=true>
-        <ion-icon slot="start" src="/assets/icon/shipping.svg"></ion-icon> Commencer ma course
-      </ion-button></ng-template>
-    </ion-row>  
+      <ng-template #canShip><ion-button class="ion-justify-content-center" color="success"
+          (click)="markAsShipping($event)">
+          <ion-icon slot="start" src="/assets/icon/shipping.svg"></ion-icon> Commencer ma course
+        </ion-button></ng-template>
+      <ng-template #cannotShip><ion-button class="ion-justify-content-center" color="success" [disabled]=true>
+          <ion-icon slot="start" src="/assets/icon/shipping.svg"></ion-icon> Commencer ma course
+        </ion-button></ng-template>
+    </ion-row>
   </ion-grid>
   <ion-list [inset]="true">
-    <ion-item detail="false" button id="demand{{demand.id}}" *ngFor="let demand of myDemands" color="{{ utils.getBgColor(demand.priority) }}">
+    <ion-item detail="false" button id="demand{{demand.id}}" *ngFor="let demand of myDemands"
+      color="{{ utils.getBgColor(demand.priority) }}">
       <ion-icon slot="start" size="large" color="primary" src="{{ utils.getIcon(demand.status) }}"></ion-icon>
       <p> {{ getProducts(demand) }} </p>
-      
-      <ion-button id="chat-demand{{demand.id}}" clear slot="end" (click)="openChat($event, demand)" style="height: 100%; --background: rgba(0, 0, 0, 0);">
+
+      <ion-button id="chat-demand{{demand.id}}" clear slot="end" (click)="openChat($event, demand)"
+        style="height: 100%; --background: rgba(0, 0, 0, 0);">
         <ion-icon slot="icon-only" name="chatbox-ellipses-outline">
           <ion-badge id="notifications-badge" color="danger">5</ion-badge>
         </ion-icon>
@@ -31,7 +34,7 @@
               <ion-title>Discussion</ion-title>
             </ion-toolbar>
           </ion-header>
-          
+
         </ng-template>
       </ion-modal>
 
@@ -47,23 +50,24 @@
           </ion-header>
 
           <ion-content>
-            <ion-text>Priorité : <ion-badge style="vertical-align: bottom;" color="{{ utils.getBgColor(demand.priority) }}"><b>{{ demand.priority }}</b></ion-badge></ion-text>
+            <ion-text>Priorité : <ion-badge style="vertical-align: bottom;"
+                color="{{ utils.getBgColor(demand.priority) }}"><b>{{ demand.priority }}</b></ion-badge></ion-text>
             <ion-card>
               <ion-card-content>
                 <div id="map{{demand.id}}" style="height: 300px;">
-                <app-map lat="{{demand.location.latitude}}" lng="{{demand.location.longitude}}"
-                mapId="{{demand.id}}"></app-map>
-              </div>
+                  <app-map lat="{{demand.location.latitude}}" lng="{{demand.location.longitude}}"
+                    mapId="{{demand.id}}"></app-map>
+                </div>
               </ion-card-content>
             </ion-card>
             <ion-card>
               <ion-card-header>
                 <ion-card-title>Contenu</ion-card-title>
               </ion-card-header>
-            
+
               <ion-card-content>
                 <ion-list>
-                  <ion-item *ngFor="let item of demand.content" >
+                  <ion-item *ngFor="let item of demand.content">
                     <ion-label>{{ item.quantity }} x {{ item.label }}</ion-label>
                   </ion-item>
                 </ion-list>
