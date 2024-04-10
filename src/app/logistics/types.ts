@@ -26,3 +26,8 @@ export type Demand = {
   },
   content: { label: string; quantity: number; item: string }[];
 };
+
+export type Message = {
+  content: string;
+  from: "me" | "you";
+}

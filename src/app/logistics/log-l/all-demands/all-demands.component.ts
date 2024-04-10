@@ -51,7 +51,7 @@ import { MapComponent } from 'src/app/map/map.component';
 export class LogLAllDemandsComponent implements OnInit {
   pendingDemands: Demand[]; // Demands with status 'Pending'
   otherDemands: Demand[]; // Demands with status 'Assigned'
-  isDeliveryPerson: boolean = false; // for demonstration, change this value for the delivery person's point of view
+  isDeliveryPerson: boolean = true; // for demonstration, change this value for the delivery person's point of view
   @ViewChildren(I.IonModal) modals: any[] = [];
 
   constructor(public utils: Utils) {

@@ -1,13 +1,15 @@
 import { AfterViewInit, Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import * as I from '@ionic/angular/standalone';
-import { closeOutline } from 'ionicons/icons';
+import { chatboxEllipsesOutline, closeOutline } from 'ionicons/icons';
 import { Demand, DemandStatus } from '../../types';
 import { addIcons } from 'ionicons';
+import { ModalController } from '@ionic/angular';
+import * as I from '@ionic/angular/standalone';
 
 import { demands } from '../../dummy';
 import { Utils } from '../../utils';
 import { MapComponent } from 'src/app/map/map.component';
+import { ChatModalComponent } from 'src/app/chat-modal/chat-modal.component';
 
 
 @Component({
@@ -16,6 +18,7 @@ import { MapComponent } from 'src/app/map/map.component';
   styleUrls: ['./my-demands.component.scss'],
   standalone: true,
   imports: [
+    ChatModalComponent,
     MapComponent,
     I.IonGrid,
     I.IonRow,
@@ -49,6 +52,7 @@ export class LogLMyDemandsComponent implements OnInit, AfterViewInit {
     this.myDemands = demands;
     addIcons({
       closeOutline,
+      chatboxEllipsesOutline,
     });
   }
   
@@ -70,6 +74,10 @@ export class LogLMyDemandsComponent implements OnInit, AfterViewInit {
     event.stopPropagation();
     // call au backend pour ouvrir le chat
     console.log('openChat', demand);
+
+    let modal = new I.IonModal({
+      component: ChatModalComponent,
+    });
   }
   
   markAsShipping(event: Event) {
