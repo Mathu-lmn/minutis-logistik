@@ -11,7 +11,7 @@
     </ion-row>  
   </ion-grid>
   <ion-list [inset]="true">
-    <ion-item detail="false" button id="demand{{demand.id}}" *ngFor="let demand of demands" color="{{ utils.getBgColor(demand.priority) }}">
+    <ion-item detail="false" button id="demand{{demand.id}}" *ngFor="let demand of myDemands" color="{{ utils.getBgColor(demand.priority) }}">
       <p> {{ getProducts(demand) }} </p>
       <ion-modal trigger="demand{{demand.id}}">
         <ng-template>

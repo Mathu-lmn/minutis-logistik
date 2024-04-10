@@ -35,8 +35,8 @@ import { MapComponent } from 'src/app/map/map.component';
     I.IonCardHeader,
     I.IonCardTitle,
     I.IonCardContent,
-    CommonModule,
     I.IonButton,
+    CommonModule,
   ],
 })
 export class LogLMyDemandsComponent implements OnInit, AfterViewInit {
