@@ -27,3 +27,5 @@ export type Demand = {
   },
   content: { label: string; quantity: number; item: string }[];
 };
+
+export type Item = {id: number, name: string, comment:string}

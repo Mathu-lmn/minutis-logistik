@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, NgModule, ViewChildren } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -24,11 +24,11 @@ import { CommonModule } from '@angular/common';
 import { LogLMyDemandsComponent } from './log-l/my-demands/my-demands.component';
 import { LogLAllDemandsComponent } from './log-l/all-demands/all-demands.component';
 import { LogSMyDemandsComponent } from './log-s/my-demands/my-demands.component';
-import { Demand, DemandPriority, DemandStatus } from './types';
+import { Demand, DemandPriority, DemandStatus, Item } from './types';
+import { listItems as IList } from './dummy';
 import { addIcons } from 'ionicons';
 import { add } from 'ionicons/icons';
 
-interface Item {id: number, name: string, comment:string}
 
 @Component({
   selector: 'app-logistics',
@@ -62,10 +62,14 @@ interface Item {id: number, name: string, comment:string}
 export class LogisticsPage {
   isER: boolean = false; // pour la démonstration, changez cette valeur pour le point de vue du secouriste & du logisticien
   segmentValue: string;
-  listItems: Item[] = [{id: 1, name: 'Item 1', comment: 'Comment 1'}, {id: 2, name: 'Item 2', comment: 'Comment 2'}, {id: 3, name: 'Item 3', comment: 'Comment 3'}];
+  listItems: Item[] = IList ;
   static iD: number = 0;
+  static contentID: number = 1;
   selection: String = "Autre"
   currentDemand: Demand;
+
+
+  @ViewChildren(IonModal) modals: any[] = [];
 
 
   constructor() {
@@ -83,19 +87,9 @@ export class LogisticsPage {
     this.isER = !this.isER;
   }
 
-  /* id: number;
-  status: DemandStatus;
-  assigned: boolean;
-  priority: DemandPriority;
-  timestampDemand: string;
-  comment: string;
-  location: {
-    latitude: number;
-    longitude: number;
-  },
-  content: { label: string; quantity: number; item: string }[]; */
 
   initCurrentDemand() {
+    
     return {
       id: ++LogisticsPage.iD,
       status: DemandStatus.Pending,
@@ -103,7 +97,7 @@ export class LogisticsPage {
       priority: DemandPriority.Medium,
       timestampDemand: new Date().toISOString(),
       comment:'',
-      location: this.rdmCoord(),
+      location: this.rdmCoord(), // replace by backend
       content: [],
     }
   }
@@ -114,12 +108,22 @@ export class LogisticsPage {
 
   addItem() {
     this.currentDemand.content.push({label: '', quantity: 0, item: ''});
-   }
+  }
 
-   saveSelection(event: any) {
+  saveSelection(event: CustomEvent) {
     this.selection = event.detail.value;
     console.log(event);
-   }
+  }
 
-   
+  saveDemand() {
+    this.dismissModal()
+    // add backend to save demand
+    return
+  }
+
+  dismissModal() {
+    this.modals.forEach(m => m.dismiss(null, 'cancel'))
+  }
+
+
 }
