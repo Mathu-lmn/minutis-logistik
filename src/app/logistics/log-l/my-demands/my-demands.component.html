@@ -12,7 +12,12 @@
   </ion-grid>
   <ion-list [inset]="true">
     <ion-item detail="false" button id="demand{{demand.id}}" *ngFor="let demand of myDemands" color="{{ utils.getBgColor(demand.priority) }}">
+      <ion-icon slot="start" size="large" color="primary" src="{{ utils.getIcon(demand.status) }}"></ion-icon>
       <p> {{ getProducts(demand) }} </p>
+
+      <ion-button slot="end" color="primary" (click)="openChat($event, demand)">
+        <ion-icon slot="icon-only" name="chatbox-ellipses-outline"></ion-icon>
+      </ion-button>
       <ion-modal trigger="demand{{demand.id}}">
         <ng-template>
           <ion-header [translucent]="false">

@@ -65,6 +65,12 @@ export class LogLMyDemandsComponent implements OnInit, AfterViewInit {
   log(demand: Demand) {
     console.log(demand);
   }
+
+  openChat(event: Event, demand: Demand) {
+    event.stopPropagation();
+    // call au backend pour ouvrir le chat
+    console.log('openChat', demand);
+  }
   
   markAsShipping(event: Event) {
     if (this.checkIfCurrentlyShipping()) {
