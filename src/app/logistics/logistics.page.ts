@@ -7,6 +7,7 @@ import {
   IonSegment,
   IonLabel,
   IonSegmentButton,
+  IonToggle
 } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { LogLMyDemandsComponent } from './log-l/my-demands/my-demands.component';
@@ -30,6 +31,7 @@ import { LogSMyDemandsComponent } from './log-s/my-demands/my-demands.component'
     LogLAllDemandsComponent,
     LogSMyDemandsComponent,
     CommonModule,
+    IonToggle
   ],
 })
 export class LogisticsPage {
@@ -41,5 +43,9 @@ export class LogisticsPage {
 
   segmentChanged(event: any) {
     this.segmentValue = event.detail.value;
+  }
+
+  toggleLogistic() {
+    this.isER = !this.isER;
   }
 }
