@@ -8,9 +8,9 @@ export enum DemandStatus {
 
 export enum DemandPriority {
   Urgent = 'Urgent',
-  High = 'High',
-  Medium = 'Medium',
-  Low = 'Low',
+  High = 'Élevée',
+  Medium = 'Moyenne',
+  Low = 'Basse',
 }
 
 export type Demand = {
@@ -20,5 +20,9 @@ export type Demand = {
   priority: DemandPriority;
   timestampDemand: string;
   comment: string;
+  location: {
+    latitude: number;
+    longitude: number;
+  },
   content: { label: string; quantity: number; item: string }[];
 };
