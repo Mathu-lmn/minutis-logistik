@@ -1,19 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import * as I from '@ionic/angular/standalone';
 import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonSegment,
-  IonLabel,
-  IonButton,
-  IonList,
-  IonItem,
-  IonIcon,
-  IonListHeader,
-} from '@ionic/angular/standalone';
-import {
+  closeOutline,
   hourglassOutline,
   storefrontOutline,
   cubeOutline,
@@ -35,32 +24,50 @@ import { MapComponent } from 'src/app/map/map.component';
   standalone: true,
   imports: [
     MapComponent,
+    I.IonItemGroup,
+    I.IonItemDivider,
+    I.IonGrid,
+    I.IonRow,
+    I.IonBadge,
+    I.IonIcon,
+    I.IonContent,
+    I.IonText,
+    I.IonList,
+    I.IonLabel,
+    I.IonItem,
+    I.IonInfiniteScroll,
+    I.IonToolbar,
+    I.IonHeader,
+    I.IonTitle,
+    I.IonModal,
+    I.IonCard,
+    I.IonCardHeader,
+    I.IonCardTitle,
+    I.IonCardContent,
+    I.IonButton,
+    I.IonListHeader,
     CommonModule,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonSegment,
-    IonButton,
-    IonLabel,
-    IonList,
-    IonItem,
-    IonIcon,
-    IonListHeader,
   ],
 })
 export class LogSMyDemandsComponent implements OnInit {
   demands: Demand[];
+  @ViewChildren(I.IonModal) modals: any[] = [];
 
   constructor(public utils: Utils) {
     addIcons({
+      closeOutline,
       hourglassOutline,
       storefrontOutline,
       cubeOutline,
       sendOutline,
       checkmarkDoneOutline,
     });
-    this.demands = demands;
+    this.demands = demands.sort((a, b) => {
+      if (a.priority === b.priority) {
+        return a.timestampDemand - b.timestampDemand;
+      }
+      return Object.values(DemandPriority).indexOf(a.priority) - Object.values(DemandPriority).indexOf(b.priority);
+    });
   }
 
   getProducts(demand: any) {
@@ -69,8 +76,32 @@ export class LogSMyDemandsComponent implements OnInit {
       .join(', ');
   }
 
+  getTimeDifference(timestamp: number): string {
+    const now = Date.now();
+    const difference = now - timestamp;
+    const minutes = Math.floor(difference / 60000); // Convert milliseconds to minutes
+
+    if (minutes < 1) {
+      return "à l'instant";
+    } else if (minutes < 60) {
+      return `Il y a ${minutes} minute${minutes > 1 ? 's' : ''}`;
+    } else {
+      const hours = Math.floor(minutes / 60);
+      if (hours < 24) {
+        return `Il y a ${hours} heure${hours > 1 ? 's' : ''}`;
+      } else {
+        const days = Math.floor(hours / 24);
+        return `Il y a ${days} jour${days > 1 ? 's' : ''}`;
+      }
+    }
+  }
+
   showDemand(demand: any) {
     console.log('showDemand', demand);
+  }
+
+  dismissModal() {
+    this.modals.forEach(m => m.dismiss(null, 'cancel'))
   }
 
   ngOnInit() {
