@@ -15,7 +15,8 @@ import {
   IonSelect,
   IonSelectOption,
   IonIcon,
-  IonButton
+  IonButton,
+  IonFabButton,
 } 
 
 from '@ionic/angular/standalone';
@@ -54,7 +55,8 @@ interface Item {id: number, name: string, comment:string}
     IonSelect,
     IonSelectOption,
     IonIcon,
-    IonButton
+    IonButton,
+    IonFabButton,
   ],
 })
 export class LogisticsPage {
