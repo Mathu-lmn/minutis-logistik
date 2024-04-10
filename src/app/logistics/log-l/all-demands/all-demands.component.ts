@@ -24,6 +24,8 @@ import { MapComponent } from 'src/app/map/map.component';
   standalone: true,
   imports: [
     MapComponent,
+    I.IonItemGroup,
+    I.IonItemDivider,
     I.IonGrid,
     I.IonRow,
     I.IonBadge,
@@ -47,7 +49,8 @@ import { MapComponent } from 'src/app/map/map.component';
   ],
 })
 export class LogLAllDemandsComponent implements OnInit {
-  demands: Demand[];
+  pendingDemands: Demand[]; // Demands with status 'Pending'
+  otherDemands: Demand[]; // Demands with status 'Assigned'
 
   @ViewChildren(I.IonModal) modals: any[] = [];
 
@@ -60,7 +63,24 @@ export class LogLAllDemandsComponent implements OnInit {
       checkmarkDoneOutline,
       closeOutline,
     });
-    this.demands = demands;
+    this.pendingDemands = demands.filter(
+      (demand) => demand.status === DemandStatus.Pending
+    );
+    this.pendingDemands.sort((a, b) => {
+      if (a.priority === b.priority) {
+        return a.timestampDemand - b.timestampDemand;
+      }
+      return Object.values(DemandPriority).indexOf(a.priority) - Object.values(DemandPriority).indexOf(b.priority);
+    });
+    this.otherDemands = demands.filter(
+      (demand) => demand.status !== DemandStatus.Pending
+    );
+    this.otherDemands.sort((a, b) => {
+      if (a.priority === b.priority) {
+        return a.timestampDemand - b.timestampDemand;
+      }
+      return Object.keys(DemandPriority).indexOf(a.priority) - Object.keys(DemandPriority).indexOf(b.priority);
+    });
   }
 
   getProducts(demand: Demand) {
