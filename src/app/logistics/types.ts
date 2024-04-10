@@ -1,4 +1,5 @@
 export enum DemandStatus {
+  New = 'New',
   Pending = 'Pending',
   Assigned = 'Assigned',
   ReadyToShip = 'Ready-to-Ship',
@@ -26,3 +27,5 @@ export type Demand = {
   },
   content: { label: string; quantity: number; item: string }[];
 };
+
+export type Item = {id: number, name: string, comment:string}

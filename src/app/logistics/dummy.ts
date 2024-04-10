@@ -1,4 +1,4 @@
-import { Demand, DemandPriority, DemandStatus } from "./types";
+import { Demand, DemandPriority, DemandStatus, Item } from "./types";
 
 export const tableData = [
     { label: 'Medikit', quantity: 1, item: 'medkit' },
@@ -161,4 +161,11 @@ export const demands: Demand[] = [
       },
       content: [tableData[0]],
     },
+];
+
+
+export const listItems: Item[] = [
+  {id: 1, name: 'Item 1', comment: 'Comment 1'}, 
+  {id: 2, name: 'Item 2', comment: 'Comment 2'}, 
+  {id: 3, name: 'Item 3', comment: 'Comment 3'}
 ];
