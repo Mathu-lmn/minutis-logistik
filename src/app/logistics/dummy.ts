@@ -10,6 +10,11 @@ export const demands: Demand[] = [
     {
       id: 1,
       status: DemandStatus.ReadyToShip,
+      statusHistory: [
+        { status: DemandStatus.Pending, timestamp: 1712733254155 },
+        { status: DemandStatus.Assigned, timestamp: 1712734820000 },
+        { status: DemandStatus.ReadyToShip, timestamp: 1712737320000 },
+      ],
       assigned: false,
       priority: DemandPriority.Urgent,
       timestampDemand: 1712733254155,
@@ -23,6 +28,9 @@ export const demands: Demand[] = [
     {
       id: 2,
       status: DemandStatus.Pending,
+      statusHistory: [
+        { status: DemandStatus.Pending, timestamp: 1712577345000 },
+      ],
       assigned: false,
       priority: DemandPriority.Medium,
       timestampDemand: 1712577345000,
@@ -43,6 +51,10 @@ export const demands: Demand[] = [
     {
       id: 3,
       status: DemandStatus.Assigned,
+      statusHistory: [
+        { status: DemandStatus.Pending, timestamp: 1712733254155 },
+        { status: DemandStatus.Assigned, timestamp: 1712737320000 },
+      ],
       assigned: false,
       priority: DemandPriority.Low,
       timestampDemand: 1712737320000,
@@ -56,6 +68,11 @@ export const demands: Demand[] = [
     {
       id: 4,
       status: DemandStatus.Shipping,
+      statusHistory: [
+        { status: DemandStatus.Pending, timestamp: 1712728959000 },
+        { status: DemandStatus.ReadyToShip, timestamp: 1712731320000 },
+        { status: DemandStatus.Shipping, timestamp: 1712737320000 },
+      ],
       assigned: false,
       priority: DemandPriority.High,
       timestampDemand: 1712728959000,
@@ -73,6 +90,13 @@ export const demands: Demand[] = [
     {
       id: 5,
       status: DemandStatus.Delivered,
+      statusHistory: [
+        { status: DemandStatus.Pending, timestamp: 1712720598000 },
+        { status: DemandStatus.Assigned, timestamp: 1712737320000 },
+        { status: DemandStatus.ReadyToShip, timestamp: 1712737420000 },
+        { status: DemandStatus.Shipping, timestamp: 1712738480000 },
+        { status: DemandStatus.Delivered, timestamp: 1712739590000 },
+      ],
       assigned: false,
       priority: DemandPriority.Medium,
       timestampDemand: 1712720598000,
@@ -86,6 +110,9 @@ export const demands: Demand[] = [
     {
       id: 6,
       status: DemandStatus.Pending,
+      statusHistory: [
+        { status: DemandStatus.Pending, timestamp: 1712712237000 },
+      ],
       assigned: false,
       priority: DemandPriority.Low,
       timestampDemand: 1712712237000,
@@ -99,6 +126,11 @@ export const demands: Demand[] = [
     {
       id: 7,
       status: DemandStatus.ReadyToShip,
+      statusHistory: [
+        { status: DemandStatus.Pending, timestamp: 1712703876000 },
+        { status: DemandStatus.Assigned, timestamp: 1712707320000 },
+        { status: DemandStatus.ReadyToShip, timestamp: 1712717320000 },
+      ],
       assigned: false,
       priority: DemandPriority.High,
       timestampDemand: 1712703876000,
@@ -112,6 +144,9 @@ export const demands: Demand[] = [
     {
       id: 8,
       status: DemandStatus.Pending,
+      statusHistory: [
+        { status: DemandStatus.Pending, timestamp: 1712598157000 },
+      ],
       assigned: false,
       priority: DemandPriority.Medium,
       timestampDemand: 1712598157000,
@@ -125,6 +160,10 @@ export const demands: Demand[] = [
     {
       id: 9,
       status: DemandStatus.Assigned,
+      statusHistory: [
+        { status: DemandStatus.Pending, timestamp: 1712601599000 },
+        { status: DemandStatus.Assigned, timestamp: 1712607320000 },
+      ],
       assigned: false,
       priority: DemandPriority.Low,
       timestampDemand: 1712601599000,
@@ -138,6 +177,11 @@ export const demands: Demand[] = [
     {
       id: 10,
       status: DemandStatus.Shipping,
+      statusHistory: [
+        { status: DemandStatus.Pending, timestamp: 1712549009000 },
+        { status: DemandStatus.ReadyToShip, timestamp: 1712551320000 },
+        { status: DemandStatus.Shipping, timestamp: 1712562320000 },
+      ],
       assigned: false,
       priority: DemandPriority.High,
       timestampDemand: 1712549009000,
@@ -151,6 +195,13 @@ export const demands: Demand[] = [
     {
       id: 11,
       status: DemandStatus.Delivered,
+      statusHistory: [
+        { status: DemandStatus.Pending, timestamp: 1712610433000 },
+        { status: DemandStatus.Assigned, timestamp: 1712617320000 },
+        { status: DemandStatus.ReadyToShip, timestamp: 1712727320000 },
+        { status: DemandStatus.Shipping, timestamp: 1713137320000 },
+        { status: DemandStatus.Delivered, timestamp: 1713247320000 },
+      ],
       assigned: false,
       priority: DemandPriority.Medium,
       timestampDemand: 1712610433000,

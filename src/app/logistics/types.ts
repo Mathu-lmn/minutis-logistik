@@ -16,6 +16,7 @@ export enum DemandPriority {
 export type Demand = {
   id: number;
   status: DemandStatus;
+  statusHistory: { status: DemandStatus; timestamp: number }[];
   assigned: boolean;
   priority: DemandPriority;
   timestampDemand: number;
