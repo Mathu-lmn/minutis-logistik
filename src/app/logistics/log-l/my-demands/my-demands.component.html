@@ -25,9 +25,14 @@
 
           <ion-content>
             <ion-text>Priorité : <ion-badge style="vertical-align: bottom;" color="{{ utils.getBgColor(demand.priority) }}"><b>{{ demand.priority }}</b></ion-badge></ion-text>
-            <div id="map{{demand.id}}" style="height: 300px;">
-              <app-map lat="{{demand.location.latitude}}" lng="{{demand.location.longitude}}" mapId="{{demand.id}}"></app-map>
-            </div>
+            <ion-card>
+              <ion-card-content>
+                <div id="map{{demand.id}}" style="height: 300px;">
+                <app-map lat="{{demand.location.latitude}}" lng="{{demand.location.longitude}}"
+                mapId="{{demand.id}}"></app-map>
+              </div>
+              </ion-card-content>
+            </ion-card>
             <ion-card>
               <ion-card-header>
                 <ion-card-title>Contenu</ion-card-title>

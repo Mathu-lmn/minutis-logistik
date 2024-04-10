@@ -19,10 +19,14 @@
             <ion-content>
               <ion-text>Priorité : <ion-badge style="vertical-align: bottom;"
                   color="{{ utils.getBgColor(demand.priority) }}"><b>{{ demand.priority }}</b></ion-badge></ion-text>
-              <div id="map{{demand.id}}" style="height: 300px;">
-                <app-map lat="{{demand.location.latitude}}" lng="{{demand.location.longitude}}"
-                  mapId="{{demand.id}}"></app-map>
-              </div>
+                  <ion-card>
+                    <ion-card-content>
+                      <div id="map{{demand.id}}" style="height: 300px;">
+                      <app-map lat="{{demand.location.latitude}}" lng="{{demand.location.longitude}}"
+                      mapId="{{demand.id}}"></app-map>
+                    </div>
+                    </ion-card-content>
+                  </ion-card>
               <ion-card>
                 <ion-card-header>
                   <ion-card-title>Contenu</ion-card-title>
@@ -57,7 +61,7 @@
     <ion-item-divider color="light">Autres demandes</ion-item-divider>
     <!-- List for other demands -->
     <ion-item-group *ngFor="let demand of otherDemands">
-      <ion-item detail="false" button color="{{ utils.getBgColor(demand.priority) }}" id="demand{{demand.id}}">
+      <ion-item detail="false" button color="medium" id="demand{{demand.id}}">
         <ion-icon slot="start" size="large" color="primary" src="{{ utils.getIcon(demand.status) }}"></ion-icon>
         <p>{{getProducts(demand)}}</p>
         <ion-modal trigger="demand{{demand.id}}">
@@ -72,10 +76,14 @@
             <ion-content>
               <ion-text>Priorité : <ion-badge style="vertical-align: bottom;"
                   color="{{ utils.getBgColor(demand.priority) }}"><b>{{ demand.priority }}</b></ion-badge></ion-text>
-              <div id="map{{demand.id}}" style="height: 300px;">
-                <app-map lat="{{demand.location.latitude}}" lng="{{demand.location.longitude}}"
-                  mapId="{{demand.id}}"></app-map>
-              </div>
+                  <ion-card>
+                    <ion-card-content>
+                      <div id="map{{demand.id}}" style="height: 300px;">
+                      <app-map lat="{{demand.location.latitude}}" lng="{{demand.location.longitude}}"
+                      mapId="{{demand.id}}"></app-map>
+                    </div>
+                    </ion-card-content>
+                  </ion-card>
               <ion-card>
                 <ion-card-header>
                   <ion-card-title>Contenu</ion-card-title>

@@ -11,3 +11,22 @@ ion-item p {
   overflow: hidden !important;
   text-overflow: ellipsis;
 }
+
+ion-modal {
+  ion-header {
+    ion-icon {
+      color: white;
+      --padding-start: 3%;
+    }
+    ion-title {
+      color: white;
+      font-weight: bold;
+      font-size: large;
+    }
+  }
+  ion-content {
+    --padding-start: 3%;
+    --padding-end: 3%;
+    --padding-top: 2%;
+  }
+}

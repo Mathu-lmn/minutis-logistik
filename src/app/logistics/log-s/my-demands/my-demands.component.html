@@ -6,9 +6,75 @@
       </ion-title>
     </ion-list-header>
     <ng-container *ngFor="let demand of demands">
-      <ion-item detail="false" button *ngIf="demand.status !== 'Delivered'" color="{{utils.getBgColor(demand.priority)}}">
+      <ion-item detail="false" button id="demand{{demand.id}}" *ngIf="demand.status !== 'Delivered'"
+        color="{{utils.getBgColor(demand.priority)}}">
         <ion-icon slot="start" size="large" color="primary" src="{{utils.getIcon(demand.status)}}"></ion-icon>
         <p>{{getProducts(demand)}}</p>
+        <ion-badge style="margin-left:10px;" slot="end"
+          color="{{ utils.getBgColor(demand.priority) }}">{{getTimeDifference(demand.timestampDemand) }}</ion-badge>
+        <ion-modal trigger="demand{{demand.id}}">
+          <ng-template>
+            <ion-header [translucent]="false">
+              <ion-toolbar>
+                <ion-icon (click)="dismissModal()" name="close-outline" size="large" slot="start"></ion-icon>
+                <ion-title slot="primary">Détails de la demande</ion-title>
+              </ion-toolbar>
+            </ion-header>
+
+            <ion-content>
+              <ion-text>Priorité : <ion-badge style="vertical-align: bottom;"
+                  color="{{ utils.getBgColor(demand.priority) }}"><b>{{ demand.priority }}</b>
+                </ion-badge></ion-text>
+              
+              <ng-container *ngIf="demand.status === 'Shipping'">
+                <ion-card>
+                  <ion-card-content>
+                    <div id="map{{demand.id}}" style="height: 300px;">
+                    <app-map lat="{{demand.location.latitude}}" lng="{{demand.location.longitude}}"
+                    mapId="{{demand.id}}"></app-map>
+                  </div>
+                  </ion-card-content>
+                </ion-card>
+              </ng-container>
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-title>Historique des status</ion-card-title>
+                </ion-card-header>
+
+                <ion-card-content>
+                  <ion-list>
+                    <ion-item *ngFor="let status of demand.statusHistory">
+                      <ion-label>{{ utils.getStatusLocale(status.status) }} le {{ status.timestamp | date: 'dd/MM/yyyy à
+                        HH:mm' }}</ion-label>
+                    </ion-item>
+                  </ion-list>
+                </ion-card-content>
+              </ion-card>
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-title>Contenu</ion-card-title>
+                </ion-card-header>
+
+                <ion-card-content>
+                  <ion-list>
+                    <ion-item *ngFor="let item of demand.content">
+                      <ion-label>{{ item.quantity }} x {{ item.label }}</ion-label>
+                    </ion-item>
+                  </ion-list>
+                </ion-card-content>
+              </ion-card>
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-title>Commentaire du demandeur</ion-card-title>
+                </ion-card-header>
+
+                <ion-card-content>
+                  <ion-text>{{ demand.comment }}</ion-text>
+                </ion-card-content>
+              </ion-card>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
       </ion-item>
     </ng-container>
     <ion-item *ngIf="demands.length === 0">
