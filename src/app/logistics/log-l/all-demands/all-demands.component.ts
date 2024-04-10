@@ -26,7 +26,6 @@ import { MapComponent } from 'src/app/map/map.component';
     MapComponent,
     I.IonItemGroup,
     I.IonItemDivider,
-    I.IonCheckbox,
     I.IonGrid,
     I.IonRow,
     I.IonBadge,
