@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import * as I from '@ionic/angular/standalone';
-import { closeOutline } from 'ionicons/icons';
+import { chatboxEllipsesOutline, closeOutline } from 'ionicons/icons';
 import { Demand, DemandStatus, DemandPriority } from '../../types';
 import { addIcons } from 'ionicons';
+import { ModalController } from '@ionic/angular';
+import * as I from '@ionic/angular/standalone';
 
 import { demands } from '../../dummy';
 import { Utils } from '../../utils';
@@ -36,6 +37,7 @@ import { MapComponent } from 'src/app/map/map.component';
     I.IonCardTitle,
     I.IonCardContent,
     I.IonButton,
+    I.IonButtons,
     CommonModule,
   ],
 })
@@ -54,6 +56,7 @@ export class LogLMyDemandsComponent implements OnInit, AfterViewInit {
     });
     addIcons({
       closeOutline,
+      chatboxEllipsesOutline,
     });
   }
   
@@ -89,6 +92,12 @@ export class LogLMyDemandsComponent implements OnInit, AfterViewInit {
   
   log(demand: Demand) {
     console.log(demand);
+  }
+
+  openChat(event: Event, demand: Demand) {
+    event.stopPropagation();
+    // call au backend pour ouvrir le chat
+    console.log('openChat', demand);
   }
   
   markAsShipping(event: Event) {
