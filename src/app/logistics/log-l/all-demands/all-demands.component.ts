@@ -26,6 +26,7 @@ import { MapComponent } from 'src/app/map/map.component';
     MapComponent,
     I.IonItemGroup,
     I.IonItemDivider,
+    I.IonCheckbox,
     I.IonGrid,
     I.IonRow,
     I.IonBadge,
@@ -51,7 +52,7 @@ import { MapComponent } from 'src/app/map/map.component';
 export class LogLAllDemandsComponent implements OnInit {
   pendingDemands: Demand[]; // Demands with status 'Pending'
   otherDemands: Demand[]; // Demands with status 'Assigned'
-
+  isDeliveryPerson: boolean = true; // for demonstration, change this value for the delivery person's point of view
   @ViewChildren(I.IonModal) modals: any[] = [];
 
   constructor(public utils: Utils) {
@@ -64,7 +65,13 @@ export class LogLAllDemandsComponent implements OnInit {
       closeOutline,
     });
     this.pendingDemands = demands.filter(
-      (demand) => demand.status === DemandStatus.Pending
+        (demand) => {
+          // if this.isDeliveryPerson is true, we only show demands with status 'ReadyToShip', if this.isPreparer is true, we only show demands with status 'Pending'
+          if (this.isDeliveryPerson) {
+            return demand.status === DemandStatus.ReadyToShip;
+          }
+          return demand.status === DemandStatus.Pending;
+        }
     );
     this.pendingDemands.sort((a, b) => {
       if (a.priority === b.priority) {
@@ -73,7 +80,13 @@ export class LogLAllDemandsComponent implements OnInit {
       return Object.values(DemandPriority).indexOf(a.priority) - Object.values(DemandPriority).indexOf(b.priority);
     });
     this.otherDemands = demands.filter(
-      (demand) => demand.status !== DemandStatus.Pending
+      (demand) => {
+        // if this.isDeliveryPerson is true, we only show demands with status 'ReadyToShip', if this.isPreparer is true, we only show demands with status 'Pending'
+        if (this.isDeliveryPerson) {
+          return demand.status !== DemandStatus.ReadyToShip;
+        }
+        return demand.status !== DemandStatus.Pending;
+      }
     );
     this.otherDemands.sort((a, b) => {
       if (a.priority === b.priority) {
@@ -82,6 +95,8 @@ export class LogLAllDemandsComponent implements OnInit {
       return Object.keys(DemandPriority).indexOf(a.priority) - Object.keys(DemandPriority).indexOf(b.priority);
     });
   }
+
+
 
   getProducts(demand: Demand) {
     return demand.content
