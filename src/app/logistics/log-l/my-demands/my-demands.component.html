@@ -1,20 +1,57 @@
 <div>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <div *ngIf="this.isCurrentlyShipping === true; then cannotShip else canShip"></div>
+      <ng-template #canShip><ion-button class="ion-justify-content-center" color="success" (click)="markAsShipping($event)">
+        <ion-icon slot="start" src="/assets/icon/shipping.svg"></ion-icon> Commencer ma course
+      </ion-button></ng-template>
+      <ng-template #cannotShip><ion-button  class="ion-justify-content-center" color="success" [disabled]=true>
+        <ion-icon slot="start" src="/assets/icon/shipping.svg"></ion-icon> Commencer ma course
+      </ion-button></ng-template>
+    </ion-row>  
+  </ion-grid>
   <ion-list [inset]="true">
-    <ion-item button id="demand{{demand.id}}" *ngFor="let demand of demands" color="{{ utils.getBgColor(demand.priority) }}">
-      <p> {{ getProducts(demand) }} </p>
+    <ion-item button id="demand{{demand.id}}" *ngFor="let demand of myDemands" color="{{ utils.getBgColor(demand.priority) }}">
+      <ion-row class="ion-justify-content-space-between">
+        <p> {{ getProducts(demand) }} </p>
+        <ion-button><ion-icon>Chat</ion-icon></ion-button>
+      </ion-row>
       <ion-modal trigger="demand{{demand.id}}">
         <ng-template>
           <ion-header [translucent]="false">
             <ion-toolbar>
-              <ion-icon name="close-outline" size="large"></ion-icon>
+              <ion-icon (click)="dismissModal()" name="close-outline" size="large" slot="start"></ion-icon>
               <ion-title slot="primary">Détails de la demande</ion-title>
             </ion-toolbar>
           </ion-header>
 
           <ion-content>
             <ion-text>Priorité : <ion-badge style="vertical-align: bottom;" color="{{ utils.getBgColor(demand.priority) }}"><b>{{ demand.priority }}</b></ion-badge></ion-text>
-            <div id="map{{demand.id}}"></div>
-            <app-map lat="demand.location.latitude" lng="demand.location.longitude"></app-map>
+            <div id="map{{demand.id}}" style="height: 300px;">
+              <app-map lat="{{demand.location.latitude}}" lng="{{demand.location.longitude}}" mapId="{{demand.id}}"></app-map>
+            </div>
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Contenu</ion-card-title>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <ion-list>
+                  <ion-item *ngFor="let item of demand.content" >
+                    <ion-label>{{ item.quantity }} x {{ item.label }}</ion-label>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Commentaire du demandeur</ion-card-title>
+              </ion-card-header>
+
+              <ion-card-content>
+                <ion-text>{{ demand.comment }}</ion-text>
+              </ion-card-content>
+            </ion-card>
           </ion-content>
         </ng-template>
       </ion-modal>
