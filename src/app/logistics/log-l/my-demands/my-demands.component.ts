@@ -9,7 +9,6 @@ import * as I from '@ionic/angular/standalone';
 import { demands } from '../../dummy';
 import { Utils } from '../../utils';
 import { MapComponent } from 'src/app/map/map.component';
-import { ChatModalComponent } from 'src/app/chat-modal/chat-modal.component';
 
 
 @Component({
@@ -18,7 +17,6 @@ import { ChatModalComponent } from 'src/app/chat-modal/chat-modal.component';
   styleUrls: ['./my-demands.component.scss'],
   standalone: true,
   imports: [
-    ChatModalComponent,
     MapComponent,
     I.IonGrid,
     I.IonRow,
@@ -39,6 +37,7 @@ import { ChatModalComponent } from 'src/app/chat-modal/chat-modal.component';
     I.IonCardTitle,
     I.IonCardContent,
     I.IonButton,
+    I.IonButtons,
     CommonModule,
   ],
 })
@@ -74,10 +73,6 @@ export class LogLMyDemandsComponent implements OnInit, AfterViewInit {
     event.stopPropagation();
     // call au backend pour ouvrir le chat
     console.log('openChat', demand);
-
-    let modal = new I.IonModal({
-      component: ChatModalComponent,
-    });
   }
   
   markAsShipping(event: Event) {

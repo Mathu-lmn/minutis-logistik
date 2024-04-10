@@ -15,13 +15,25 @@
       <ion-icon slot="start" size="large" color="primary" src="{{ utils.getIcon(demand.status) }}"></ion-icon>
       <p> {{ getProducts(demand) }} </p>
       
-      <ion-button clear slot="end" (click)="openChat($event, demand)" style="height: 100%; --background: rgba(0, 0, 0, 0);">
+      <ion-button id="chat-demand{{demand.id}}" clear slot="end" (click)="openChat($event, demand)" style="height: 100%; --background: rgba(0, 0, 0, 0);">
         <ion-icon slot="icon-only" name="chatbox-ellipses-outline">
           <ion-badge id="notifications-badge" color="danger">5</ion-badge>
         </ion-icon>
       </ion-button>
       <!-- Modal associé au chat d'une demande -->
-      <app-chat-modal [demand]="demand"></app-chat-modal>
+      <ion-modal trigger="chat-demand{{demand.id}}">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button color="medium" (click)="dismissModal()">Cancel</ion-button>
+              </ion-buttons>
+              <ion-title>Discussion</ion-title>
+            </ion-toolbar>
+          </ion-header>
+          
+        </ng-template>
+      </ion-modal>
 
       <!-- Modal associé à une demande -->
       <ion-modal trigger="demand{{demand.id}}">
