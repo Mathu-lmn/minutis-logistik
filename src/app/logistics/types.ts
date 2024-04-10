@@ -1,4 +1,5 @@
 export enum DemandStatus {
+  New = 'New',
   Pending = 'Pending',
   Assigned = 'Assigned',
   ReadyToShip = 'Ready-to-Ship',
