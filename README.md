@@ -1,6 +1,7 @@
 # Application de Gestion des Demandes Logistiques
 
-Cette application a été développée dans le cadre d'un hackathon pour répondre aux besoins de la Croix-Rouge en matière de gestion des demandes logistiques. Veuillez noter qu'il s'agit d'une simple idée de conception du module et qu'elle ne contient pas de sauvegarde.
+Cette application a été développée dans le cadre d'un hackathon de 2-3 jours pour répondre aux besoins de la Croix-Rouge en matière de gestion des demandes logistiques. Veuillez noter qu'il s'agit d'une simple idée de conception du module et qu'elle ne contient pas de sauvegarde.
+*PS: Notez que nous n'avions aucune notions de TypeScript et Angular / Ionic avant de commencer ce projet, nous avons donc appris sur le tas.*
 
 ## Prérequis
 
@@ -27,7 +28,8 @@ C'est tout ! Vous pouvez maintenant utiliser l'application de gestion des demand
 
 # Logistics Request Management Application
 
-This application was developed as part of a hackathon to address the logistics request management needs of the Red Cross. Please note that this is a simple conceptual design of the module and does not include persistence.
+This application was developed as part of a 2-3 days hackathon to address the logistics request management needs of the Red Cross. Please note that this is a simple conceptual design of the module and does not include persistence.
+*PS: Note that we had no knowledge of TypeScript and Angular/Ionic before starting this project, so we learned on the fly.*
 
 ## Prerequisites
 
