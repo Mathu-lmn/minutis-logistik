@@ -99,6 +99,7 @@ export class LogisticsPage {
       comment:'',
       location: this.rdmCoord(), // replace by backend
       content: [],
+      statusHistory: []
     }
   }
 
