@@ -99,7 +99,7 @@ export class LogisticsPage {
       comment:'',
       location: this.rdmCoord(), // replace by backend
       content: [],
-      statusHistory: []
+      statusHistory: [{status: DemandStatus.Pending, timestamp: new Date().getTime()}]
     }
   }
 

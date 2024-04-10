@@ -8,8 +8,6 @@ import { DemandPriority, DemandStatus } from './types';
 export class Utils {
   getIcon(status: DemandStatus) {
     switch (status) {
-      case DemandStatus.New:
-        return 'assets/icon/pending.svg';
       case DemandStatus.Pending:
         return 'assets/icon/pending.svg';
       case DemandStatus.Assigned:
@@ -40,8 +38,6 @@ export class Utils {
 
   getStatusLocale(status: DemandStatus) {
     switch (status) {
-      case DemandStatus.New:
-        return 'Création';
       case DemandStatus.Pending:
         return 'En attente';
       case DemandStatus.Assigned:

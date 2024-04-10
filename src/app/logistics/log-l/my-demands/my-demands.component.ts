@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild, ViewChildren } from '@angu
 import { CommonModule } from '@angular/common';
 import * as I from '@ionic/angular/standalone';
 import { closeOutline } from 'ionicons/icons';
-import { Demand, DemandStatus } from '../../types';
+import { Demand, DemandStatus, DemandPriority } from '../../types';
 import { addIcons } from 'ionicons';
 
 import { demands } from '../../dummy';
@@ -46,7 +46,12 @@ export class LogLMyDemandsComponent implements OnInit, AfterViewInit {
   @ViewChildren(I.IonModal) modals: any[] = [];
 
   constructor(public utils: Utils) {
-    this.myDemands = demands;
+    this.myDemands = demands.sort((a, b) => {
+      if (a.priority === b.priority) {
+        return a.timestampDemand - b.timestampDemand;
+      }
+      return Object.values(DemandPriority).indexOf(a.priority) - Object.values(DemandPriority).indexOf(b.priority);
+    });
     addIcons({
       closeOutline,
     });
@@ -60,6 +65,26 @@ export class LogLMyDemandsComponent implements OnInit, AfterViewInit {
   
   showDemand(demand: Demand) {
     console.log('showDemand', demand);
+  }
+
+  getTimeDifference(timestamp: number): string {
+    const now = Date.now();
+    const difference = now - timestamp;
+    const minutes = Math.floor(difference / 60000); // Convert milliseconds to minutes
+
+    if (minutes < 1) {
+      return "à l'instant";
+    } else if (minutes < 60) {
+      return `Il y a ${minutes} minute${minutes > 1 ? 's' : ''}`;
+    } else {
+      const hours = Math.floor(minutes / 60);
+      if (hours < 24) {
+        return `Il y a ${hours} heure${hours > 1 ? 's' : ''}`;
+      } else {
+        const days = Math.floor(hours / 24);
+        return `Il y a ${days} jour${days > 1 ? 's' : ''}`;
+      }
+    }
   }
   
   log(demand: Demand) {
